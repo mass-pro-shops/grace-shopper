@@ -7,7 +7,7 @@ const Product = require('./models/Product')
 
 //associations could go here!
 User.hasMany(Product)
-Product.belongsToMany(User)
+// Product.belongsToMany(User)
 
 
 module.exports = {

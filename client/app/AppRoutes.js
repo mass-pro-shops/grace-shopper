@@ -4,8 +4,11 @@ import { Route, Routes } from 'react-router-dom';
 import AuthForm from '../features/auth/AuthForm';
 import Home from '../features/home/Home';
 import { me } from './store';
+import { NewUserForm } from '../features/NewUserComponent';
+import { ContactPage } from '../features/contactComponent';
 import { AllProducts } from '../features';
 import Product from '../features/product/Product';
+
 
 /**
  * COMPONENT

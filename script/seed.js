@@ -1,29 +1,61 @@
-'use strict'
+'use strict';
 
-const {db, models: {User} } = require('../server/db')
+const {
+    db,
+    models: { User, Product },
+} = require('../server/db');
 
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
  */
 async function seed() {
-  await db.sync({ force: true }) // clears db and matches models to tables
-  console.log('db synced!')
+    await db.sync({ force: true }); // clears db and matches models to tables
+    console.log('db synced!');
 
-  // Creating Users
-  const users = await Promise.all([
-    User.create({ username: 'cody', password: '123' ,name:"Cody",address:"123 main"}),
-    User.create({ username: 'murphy', password: '123' ,name:"Cody", address:"123 main"}),
-  ])
+    // Creating Users
+    const users = await Promise.all([
+        User.create({
+            username: 'cody',
+            password: '123',
+            name: 'Cody',
+            address: '123 main',
+        }),
+        User.create({
+            username: 'murphy',
+            password: '123',
+            name: 'Cody',
+            address: '123 main',
+        }),
+    ]);
 
-  console.log(`seeded ${users.length} users`)
-  console.log(`seeded successfully`)
-  return {
-    users: {
-      cody: users[0],
-      murphy: users[1]
-    }
-  }
+    const products = await Promise.all([
+        Product.create({
+            name: 'Nike Shoe',
+            price: 69.99,
+            description: 'Its a shoe',
+            image: 'https://sothebys-com.brightspotcdn.com/dims4/default/07f69eb/2147483647/strip/true/crop/658x358+0+0/resize/684x372!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2F00%2F76%2F0703bab14d9db8e90b9594ffa9dc%2Fsothebys-md.brightspotcdn.jpg',
+            rating: 4.5,
+            quantity: 2,
+        }),
+        Product.create({
+            name: 'Nike Boot',
+            price: 69.99,
+            description: 'Its a Boot',
+            image: 'https://deichmann.scene7.com/asset/deichmann/US_01_702208_00?$rr_main$&defaultImage=default_obs',
+            rating: 4.1,
+            quantity: 1,
+        }),
+    ]);
+
+    console.log(`seeded ${users.length} ${products.length} users & products`);
+    console.log(`seeded successfully`);
+    return {
+        users: {
+            cody: users[0],
+            murphy: users[1],
+        },
+    };
 }
 
 /*
@@ -32,17 +64,17 @@ async function seed() {
  The `seed` function is concerned only with modifying the database.
 */
 async function runSeed() {
-  console.log('seeding...')
-  try {
-    await seed()
-  } catch (err) {
-    console.error(err)
-    process.exitCode = 1
-  } finally {
-    console.log('closing db connection')
-    await db.close()
-    console.log('db connection closed')
-  }
+    console.log('seeding...');
+    try {
+        await seed();
+    } catch (err) {
+        console.error(err);
+        process.exitCode = 1;
+    } finally {
+        console.log('closing db connection');
+        await db.close();
+        console.log('db connection closed');
+    }
 }
 
 /*
@@ -51,8 +83,8 @@ async function runSeed() {
   any errors that might occur inside of `seed`.
 */
 if (module === require.main) {
-  runSeed()
+    runSeed();
 }
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed
+module.exports = seed;

@@ -31,6 +31,13 @@ const Product = db.define('product', {
         type: Sequelize.INTEGER,
         allowNull: false,
     },
+    category: {
+        type: Sequelize.STRING,
+        allowNull: false,
+        validate: {
+            isIn: [['laptop', 'desktop', 'projector', 'audio']]
+        }
+    }
 });
 
 module.exports = Product;

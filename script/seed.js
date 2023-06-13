@@ -37,6 +37,7 @@ async function seed() {
             image: 'https://sothebys-com.brightspotcdn.com/dims4/default/07f69eb/2147483647/strip/true/crop/658x358+0+0/resize/684x372!/quality/90/?url=http%3A%2F%2Fsothebys-brightspot.s3.amazonaws.com%2Fdotcom%2F00%2F76%2F0703bab14d9db8e90b9594ffa9dc%2Fsothebys-md.brightspotcdn.jpg',
             rating: 4.5,
             quantity: 2,
+            category:'desktop'
         }),
         Product.create({
             name: 'Nike Boot',
@@ -45,6 +46,7 @@ async function seed() {
             image: 'https://deichmann.scene7.com/asset/deichmann/US_01_702208_00?$rr_main$&defaultImage=default_obs',
             rating: 4.1,
             quantity: 1,
+            category: 'laptop'
         }),
     ]);
 

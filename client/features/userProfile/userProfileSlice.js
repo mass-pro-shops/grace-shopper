@@ -37,7 +37,7 @@ const userProfileSlice = createSlice({
             state.singleUser = "it didn't work"
         }),
         builder.addCase(editUser.fulfilled, (state,action) => {
-            state.singleStudent = action.payload
+            state.singleUser = action.payload
         })
     }
 })

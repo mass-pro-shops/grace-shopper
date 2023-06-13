@@ -5,59 +5,65 @@ import { editUser, fetchSingleUser } from './userProfileSlice';
 const UserProfile = (props) => {
     const dispatch = useDispatch()
 
+    const currentUser = useSelector((state) => state.auth.me)
     const singleUser = useSelector((state) => {
-        console.log(state.singleUser.singleUser)
+        
         return state.singleUser.singleUser
     })
     
-    const user = {
-        name:"jim",
-        email:"test@gmail.com",
-        password:"123test",
-        address:"123 test street",
-        imageUrl:"https://static.wikia.nocookie.net/evangelion/images/9/92/Shinji_Ikari.png"
-    }
 
     const [name,setName] = useState("")
-    const [email, setEmail] = useState("")
+    const [userName,setUserName] = useState("")
+    // const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [address, setAddress] = useState("")
-    const [imageUrl, setImageUrl] = useState("")
 
     const handleSubmit = (e) => {
         e.preventDefault()
         const newUser = {
-            username: name,
-            id:1
+            username: userName,
+            name:name,
+            // email:email,
+            password:password,
+            address:address,
+            id:currentUser.id
         }
         
         try {   
             dispatch(editUser(newUser))
-            setName(newUser.name)
             
+            setName(newUser.name)
+            setUserName(newUser.username)
+            // setEmail(newUser.email)
+            setPassword(newUser.password)
+            setAddress(newUser.address)
         } catch (err) {
             console.log(err)
         }
     }
     
     useEffect(() => {
-        dispatch(fetchSingleUser(1))
+        dispatch(fetchSingleUser(currentUser.id))
         
-    },[])
+    },[dispatch])
 
     return (
       <div>
-        {
-        }
         <h3>Welcome, {singleUser.name}</h3>
-        <div className='leftSide'>
-            <img src={user.imageUrl} />
-        </div>
-        <div className='rightSide'>
+        <div >
             <h2>User Update Form</h2>
                 <form onSubmit={handleSubmit}>
                     <div className="contElement">
-                        <label htmlFor="name">Name: {singleUser.username}</label>
+                        <label htmlFor="username">User Name: {singleUser.username}</label>
+                        <input 
+                        type="text" 
+                        name="username" 
+                        value={userName}
+                        onChange={(e) => setUserName(e.target.value)}
+                        />
+                    </div>
+                    <div className="contElement">
+                        <label htmlFor="name">Name: {singleUser.name}</label>
                         <input 
                         type="text" 
                         name="name" 
@@ -65,7 +71,7 @@ const UserProfile = (props) => {
                         onChange={(e) => setName(e.target.value)}
                         />
                     </div>
-                    <div className="contElement">
+                    {/* <div className="contElement">
                         <label htmlFor="email">email: {singleUser.email}</label>
                         <input 
                         type="text" 
@@ -73,7 +79,7 @@ const UserProfile = (props) => {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         />
-                    </div>
+                    </div> */}
                     <div className="contElement">
                         <label htmlFor="password">password: </label>
                         <input 
@@ -90,15 +96,6 @@ const UserProfile = (props) => {
                         name="address" 
                         value={address}
                         onChange={(e) => setAddress(e.target.value)}
-                        />
-                    </div>
-                    <div className="contElement">
-                        <label htmlFor="imageUrl">ImageUrl: </label>
-                        <input 
-                        type="text" 
-                        name="imageUrl" 
-                        value={imageUrl}
-                        onChange={(e) => setImageUrl(e.target.value)}
                         />
                     </div>
                     <button type="submit">Update</button>

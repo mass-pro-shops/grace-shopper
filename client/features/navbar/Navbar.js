@@ -1,5 +1,4 @@
 import React from 'react';
-import './Navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../app/store';
@@ -28,6 +27,10 @@ const Navbar = () => {
           <div className='navbar__right'>
             {/* The navbar will show these links after you log in */}
             <p>Hi {/*user.name*/}</p>
+
+            <div>
+              <Link to='/products'>All Products</Link>
+            </div>
             
             <div className='navbar__cart'>
               {/*cart component*/}

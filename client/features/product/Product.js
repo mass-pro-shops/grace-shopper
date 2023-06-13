@@ -2,10 +2,10 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 
 const Product = () => {
-  const { productId } = useParams();
+  const { Id } = useParams();
 
   const product = {
-    id: productId,
+    id: Id,
     name: 'Example Product',
     description: 'Make a cool description later',
     price: 9.99,

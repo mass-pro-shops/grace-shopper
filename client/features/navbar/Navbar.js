@@ -1,5 +1,4 @@
 import React from 'react';
-import './Navbar.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { logout } from '../../app/store';
@@ -38,7 +37,7 @@ const Navbar = () => {
               <button className='navbar__dropdownButton'>Dropdown</button>
               <div className='navbar__dropdownContent'>
                 <Link to='/cart'>Shopping Cart</Link>
-                {/* <Link to={`/userprofile/${user.id}`}>Profile</Link> */}
+                <Link to="/userProfile">User</Link>
                 <button type="button" onClick={logoutAndRedirectHome}>
                      Logout
                 </button>

@@ -36,6 +36,7 @@ const AppRoutes = () => {
                                 name="allProducts"
                                 displayName="allProducts"
                             />}/>
+                    <Route path='/register' element={<NewUserForm/>}/>
                 </Routes>
             ) : (
                 <Routes>
@@ -63,6 +64,7 @@ const AppRoutes = () => {
                             />
                         }
                     />
+                     <Route path='/register' element={<NewUserForm/>}/>
                 </Routes>
             )}
         </div>

@@ -19,39 +19,42 @@ const AppRoutes = () => {
         dispatch(me());
     }, []);
 
-  return (
-    <div>
-      {isLoggedIn ? (
-        <Routes>
-          <Route path="/*" element={<Home />} />
-          <Route to="/home" element={<Home />} />
-        </Routes>
-      ) : (
-        <Routes>
-          <Route
-            path="/*"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          <Route
-            path="/login"
-            element={<AuthForm name="login" displayName="Login" />}
-          />
-          {/* <Route
-            path="/signup"
-            element={<AuthForm name="signup" displayName="Sign Up" />}
-          /> */}
-          <Route 
-            path="/signup"
-            element={<NewUserForm/>}
-            />
-          <Route 
-            path='/contact'
-            element={<ContactPage/>}
-          />
-        </Routes>
-      )}
-    </div>
-  );
+    return (
+        <div>
+            {isLoggedIn ? (
+                <Routes>
+                    <Route path="/*" element={<Home />} />
+                    <Route to="/home" element={<Home />} />
+                </Routes>
+            ) : (
+                <Routes>
+                    <Route
+                        path="/*"
+                        element={<AuthForm name="login" displayName="Login" />}
+                    />
+                    <Route
+                        path="/login"
+                        element={<AuthForm name="login" displayName="Login" />}
+                    />
+                    <Route
+                        path="/signup"
+                        element={
+                            <AuthForm name="signup" displayName="Sign Up" />
+                        }
+                    />
+                    <Route
+                        path="/products"
+                        element={
+                            <AllProducts
+                                name="allProducts"
+                                displayName="allProducts"
+                            />
+                        }
+                    />
+                </Routes>
+            )}
+        </div>
+    );
 };
 
 export default AppRoutes;

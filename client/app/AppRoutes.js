@@ -9,7 +9,6 @@ import { ContactPage } from '../features/contactComponent';
 import { AllProducts } from '../features';
 import Product from '../features/product/Product';
 
-
 /**
  * COMPONENT
  */
@@ -28,15 +27,21 @@ const AppRoutes = () => {
                 <Routes>
                     <Route path="/*" element={<Home />} />
                     <Route to="/home" element={<Home />} />
-                    <Route key="product" path="/products/:Id" element={<Product />} />
+                    <Route
+                        key="product"
+                        path="/products/:Id"
+                        element={<Product />}
+                    />
                     <Route
                         path="/products"
                         element={
                             <AllProducts
                                 name="allProducts"
                                 displayName="allProducts"
-                            />}/>
-                    <Route path='/register' element={<NewUserForm/>}/>
+                            />
+                        }
+                    />
+                    <Route path="/register" element={<NewUserForm />} />
                 </Routes>
             ) : (
                 <Routes>
@@ -54,7 +59,11 @@ const AppRoutes = () => {
                             <AuthForm name="signup" displayName="Sign Up" />
                         }
                     />
-                    <Route key="product" path="/product/:Id" element={<Product />} />
+                    <Route
+                        key="product"
+                        path="/products/:Id"
+                        element={<Product />}
+                    />
                     <Route
                         path="/products"
                         element={
@@ -64,7 +73,7 @@ const AppRoutes = () => {
                             />
                         }
                     />
-                     <Route path='/register' element={<NewUserForm/>}/>
+                    <Route path="/register" element={<NewUserForm />} />
                 </Routes>
             )}
         </div>

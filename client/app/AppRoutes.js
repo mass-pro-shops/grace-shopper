@@ -8,6 +8,8 @@ import { NewUserForm } from '../features/NewUserComponent';
 import { ContactPage } from '../features/contactComponent';
 import { AllProducts } from '../features';
 import Product from '../features/product/Product';
+import UserProfile from '../features/userProfile/userProfile'
+
 
 /**
  * COMPONENT
@@ -26,7 +28,9 @@ const AppRoutes = () => {
             {isLoggedIn ? (
                 <Routes>
                     <Route path="/*" element={<Home />} />
-                    <Route to="/home" element={<Home />} />
+                    <Route key="product" path="/product/:Id" element={<Product />} />
+                    <Route path="/userProfile" element={<UserProfile />} />
+
                     <Route
                         key="product"
                         path="/products/:Id"

@@ -4,9 +4,12 @@ import { Route, Routes } from 'react-router-dom';
 import AuthForm from '../features/auth/AuthForm';
 import Home from '../features/home/Home';
 import { me } from './store';
+import { NewUserForm } from '../features/NewUserComponent';
+import { ContactPage } from '../features/contactComponent';
 import { AllProducts } from '../features';
 import Product from '../features/product/Product';
 import UserProfile from '../features/userProfile/userProfile'
+
 
 /**
  * COMPONENT
@@ -25,9 +28,24 @@ const AppRoutes = () => {
             {isLoggedIn ? (
                 <Routes>
                     <Route path="/*" element={<Home />} />
-                    <Route to="/home" element={<Home />} />
                     <Route key="product" path="/product/:Id" element={<Product />} />
                     <Route path="/userProfile" element={<UserProfile />} />
+
+                    <Route
+                        key="product"
+                        path="/products/:Id"
+                        element={<Product />}
+                    />
+                    <Route
+                        path="/products"
+                        element={
+                            <AllProducts
+                                name="allProducts"
+                                displayName="allProducts"
+                            />
+                        }
+                    />
+                    <Route path="/register" element={<NewUserForm />} />
                 </Routes>
             ) : (
                 <Routes>
@@ -46,6 +64,11 @@ const AppRoutes = () => {
                         }
                     />
                     <Route
+                        key="product"
+                        path="/products/:Id"
+                        element={<Product />}
+                    />
+                    <Route
                         path="/products"
                         element={
                             <AllProducts
@@ -54,6 +77,7 @@ const AppRoutes = () => {
                             />
                         }
                     />
+                    <Route path="/register" element={<NewUserForm />} />
                 </Routes>
             )}
         </div>

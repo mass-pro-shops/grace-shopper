@@ -13,7 +13,6 @@ const Navbar = () => {
   };
 
 
-
   return (
     <div className='navbar'>
       <Link to='/home'>
@@ -27,6 +26,10 @@ const Navbar = () => {
           <div className='navbar__right'>
             {/* The navbar will show these links after you log in */}
             <p>Hi {/*user.name*/}</p>
+
+            <div>
+              <Link to='/products'>All Products</Link>
+            </div>
             
             <div className='navbar__cart'>
               {/*cart component*/}
@@ -53,7 +56,8 @@ const Navbar = () => {
                 <Link to='/cart'>Shopping Cart</Link>
                 {/* <Link to={`/userprofile/${user.id}`}>Profile</Link> */}
                 <Link to="/login">Login</Link>
-                <Link to="/signup">Sign Up</Link>
+                <Link to='/register'>New User</Link>
+                {/* <Link to="/signup">Sign Up</Link> */}
               </div>
             </div>
           </div>

@@ -12,12 +12,12 @@ import { ContactPage } from '../features/contactComponent';
  */
 
 const AppRoutes = () => {
-  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  const dispatch = useDispatch();
+    const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+    const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(me());
-  }, []);
+    useEffect(() => {
+        dispatch(me());
+    }, []);
 
   return (
     <div>

@@ -1,36 +1,36 @@
-const Sequelize = require('sequelize')
-const db = require('../db')
+const Sequelize = require('sequelize');
+const db = require('../db');
 
-const Product = db.define('product',{
-    name:{
-        type:Sequelize.STRING,
-        allowNull: false
+const Product = db.define('product', {
+    name: {
+        type: Sequelize.STRING,
+        allowNull: false,
     },
-    price:{
-        type:Sequelize.FLOAT,
-        allowNull:false,  
+    price: {
+        type: Sequelize.FLOAT,
+        allowNull: false,
     },
-    description:{
-        type:Sequelize.TEXT,
-        allowNull:false,
+    description: {
+        type: Sequelize.TEXT,
+        allowNull: false,
     },
-    image:{
-        type:Sequelize.STRING,
-        allowNull:false,
-        defaultValue:'public/images/productImage.jpeg'
+    image: {
+        type: Sequelize.TEXT,
+        allowNull: false,
+        defaultValue: 'public/images/productImage.jpeg',
     },
-    rating:{
-        type:Sequelize.FLOAT,
-        allowNull:true,
-        validate:{
-            min:0,
-            max:5
-        }
+    rating: {
+        type: Sequelize.FLOAT,
+        allowNull: true,
+        validate: {
+            min: 0,
+            max: 5,
+        },
     },
-    quantity:{
-        type:Sequelize.INTEGER,
-        allowNull:false
-    }
-})
+    quantity: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+    },
+});
 
-module.exports = Product
+module.exports = Product;

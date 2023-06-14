@@ -38,6 +38,7 @@ async function seed() {
             image: 'https://www.shutterstock.com/image-vector/laptop-blank-screen-silver-color-260nw-1382811209.jpg',
             rating: 4.5,
             quantity: 2,
+            category:'desktop'
         }),
         Product.create({
             name: 'Apple IMagineWorking 4',
@@ -83,6 +84,7 @@ async function seed() {
             image: 'https://media.wired.com/photos/63e69de969cf98bf35404277/191:100/w_2580,c_limit/Best-Wireless-Headphones-Featured-Focal-Bathys-Gear.jpg',
             rating: 4.1,
             quantity: 1,
+            category: 'laptop'
         }),
     ]);
 

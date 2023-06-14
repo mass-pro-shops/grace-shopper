@@ -55,6 +55,7 @@ const AppRoutes = () => {
                         path="/*"
                         element={<PageNotFound />}
                     />
+                    <Route path='/' element={<Home/>}/>
                     <Route path='/home' element={<Home/>}/>
                     <Route
                         path="/login"

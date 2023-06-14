@@ -9,7 +9,9 @@ import { ContactPage } from '../features/contactComponent';
 import { AllProducts } from '../features';
 import Product from '../features/product/Product';
 import UserProfile from '../features/userProfile/userProfile'
-
+import { Cart } from '../features/cart/Cart';
+import { TestProducts } from '../features/cart/testProducts';
+import Checkout, { Stripe } from '../features/cart/CheckoutTest';
 
 /**
  * COMPONENT
@@ -30,7 +32,9 @@ const AppRoutes = () => {
                     <Route path="/*" element={<Home />} />
                     <Route key="product" path="/product/:Id" element={<Product />} />
                     <Route path="/userProfile" element={<UserProfile />} />
-
+                    <Route path="/cart" element={<Cart/>}/>
+                    <Route path="/prodTEST" element ={<TestProducts/>}/>
+                    <Route path="/checkoutTEST" element = {<Checkout/>}/>
                     <Route
                         key="product"
                         path="/products/:Id"

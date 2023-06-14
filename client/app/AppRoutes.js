@@ -28,7 +28,7 @@ const AppRoutes = () => {
             {isLoggedIn ? (
                 <Routes>
                     <Route path="/*" element={<Home />} />
-                    <Route key="product" path="/product/:Id" element={<Product />} />
+                    <Route key="product" path="/products/:Id" element={<Product />} />
                     <Route path="/userProfile" element={<UserProfile />} />
 
                     <Route
@@ -63,11 +63,7 @@ const AppRoutes = () => {
                             <AuthForm name="signup" displayName="Sign Up" />
                         }
                     />
-                    <Route
-                        key="product"
-                        path="/products/:Id"
-                        element={<Product />}
-                    />
+                   
                     <Route
                         path="/products"
                         element={

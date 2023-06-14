@@ -1,32 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchProduct, getProduct } from './productSlices';
 
 const Product = () => {
   const { Id } = useParams();
-
-  const product = {
-    id: Id,
-    name: 'Example Product',
-    description: 'Make a cool description later',
-    price: 9.99,
-    // Other product details
-  };
-
+  const dispatch = useDispatch();
+  const product = useSelector(getProduct);
+console.log('this is product',product)
+  useEffect(() => {
+    dispatch(fetchProduct(Id));
+  }, [Id, dispatch]);
+//const {id, name, description, price } = product
+//console.log(id, name, description, price)
+console.log(product.id)
   return (
     <div className='singleProduct'>
-      <h1>Product Name and Details??</h1>
-      <p>Product ID: {product.id}</p>
-      <h2>{product.name}</h2>
-      <p>{product.description}</p>
-      <p>Price: ${product.price}</p>
-      {/* Render other product details */}
+      {product.id ? (
+        <div>
+          <h2>{product.name}</h2>
+          <img src={product.image}/>
+          <p>{product.description}</p>
+          <p>Price: ${product.price}</p>
+        </div>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 };
-//to do list
-//get example images
-//fix product id
-//rating
-//buy button
-// import navbar and footer later
-export default Product
+
+export default Product;

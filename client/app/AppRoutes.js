@@ -8,7 +8,12 @@ import { NewUserForm } from '../features/NewUserComponent';
 import { ContactPage } from '../features/contactComponent';
 import { AllProducts, Footer, UserProfile} from '../features';
 import Product from '../features/product/Product';
-
+import UserProfile from '../features/userProfile/userProfile';
+import PageNotFound from '../features/404NotFound/PageNotFound';
+import UserProfile from '../features/userProfile/userProfile'
+import { Cart } from '../features/cart/Cart';
+import { TestProducts } from '../features/cart/testProducts';
+import Checkout, { Stripe } from '../features/cart/CheckoutTest';
 
 /**
  * COMPONENT
@@ -29,10 +34,15 @@ const AppRoutes = () => {
             </Routes>
             {isLoggedIn ? (
                 <Routes>
-                    <Route path="/*" element={<Home />} />
+                    <Route path="/*" element={<PageNotFound />} />
+                    <Route path='/home' element={<Home/>}/>
                     <Route key="product" path="/product/:Id" element={<Product />} />
+                    <Route path="/*" element={<Home />} />
+                    <Route key="product" path="/products/:Id" element={<Product />} />
                     <Route path="/userProfile" element={<UserProfile />} />
-
+                    <Route path="/cart" element={<Cart/>}/>
+                    <Route path="/prodTEST" element ={<TestProducts/>}/>
+                    <Route path="/checkoutTEST" element = {<Checkout/>}/>
                     <Route
                         key="product"
                         path="/products/:Id"
@@ -53,23 +63,25 @@ const AppRoutes = () => {
                 <Routes>
                     <Route
                         path="/*"
-                        element={<AuthForm name="login" displayName="Login" />}
+                        element={<PageNotFound />}
                     />
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/home' element={<Home/>}/>
                     <Route
                         path="/login"
                         element={<AuthForm name="login" displayName="Login" />}
-                    />
-                    <Route
-                        path="/signup"
-                        element={
-                            <AuthForm name="signup" displayName="Sign Up" />
-                        }
                     />
                     <Route
                         key="product"
                         path="/products/:Id"
                         element={<Product />}
                     />
+                        path="/signup"
+                        element={
+                            <AuthForm name="signup" displayName="Sign Up" />
+                        }
+                    />
+                   
                     <Route
                         path="/products"
                         element={

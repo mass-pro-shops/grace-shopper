@@ -7,25 +7,25 @@ export const ContactPage = () => {
             <div>
                 <h2>Skylar Mortan</h2>
                 <a href="https://github.com/mortan738">GitHub</a>
-                <p>Email:</p>
+                <p>Email:skyleramorton@gmail.com</p>
                 <a href = "https://www.linkedin.com/in/skyleramorton/">Linkedin</a>
             </div>
             <div>
                 <h2>Angel Gonazales</h2>
                 <a href = 'https://github.com/Angelgonzalez98'>GitHub</a>
-                <p>Email:</p>
+                <p>Email:gonzalez.angel8991@gmail.com</p>
                 <a href = 'https://www.linkedin.com/in/angel-gonzalez-ux-ui/'>Linkedin</a>
             </div>
             <div>
                 <h2>Kaichong Lin</h2>
                 <a href = 'https://github.com/keven0311'>GitHub</a>
-                <p>Email:</p>
+                <p>Email:coco.keven@gmail.com</p>
                 <a href="https://www.linkedin.com/in/kaichonglin/">Linkedin</a>
             </div>
             <div>
                 <h2>Robert Hess</h2>
                 <a href="https://github.com/HRM0">Github</a>
-                <p>Email:</p>
+                <p>Email:hessrobm@gmail.com</p>
                 <a href = "https://www.linkedin.com/in/r-hess/">Linkedin</a>
             </div>
             <div>

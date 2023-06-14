@@ -23,7 +23,7 @@ router.get('/', async (req, res, next) => {
 router.get('/:id', async (req, res, next) => {
     try {
         const user = await User.findByPk(req.params.id, {
-            attributes: ['id', 'username'],
+            attributes: ['id', 'username','address','name'],
         });
         res.send(user);
     } catch (error) {

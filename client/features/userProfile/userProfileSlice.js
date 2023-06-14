@@ -23,6 +23,17 @@ export const editUser = createAsyncThunk(
     }
 )
 
+export const deleteUser = createAsyncThunk(
+    "deleteUser", async (userId) => {
+        try {
+            const {data} = await axios.delete(`/api/users/${userId}`)
+            return userId
+        } catch (err) {
+            console.log(err)
+        }
+    }
+)
+
 const userProfileSlice = createSlice({
     name:"singleUser",
     initialState:{
@@ -37,7 +48,10 @@ const userProfileSlice = createSlice({
             state.singleUser = "it didn't work"
         }),
         builder.addCase(editUser.fulfilled, (state,action) => {
-            state.singleStudent = action.payload
+            state.singleUser = action.payload
+        }),
+        builder.addCase(deleteUser.fulfilled, (state, action) => {
+            state.singleUser = []
         })
     }
 })

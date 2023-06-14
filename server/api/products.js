@@ -24,6 +24,20 @@ router.get("/:id", async ( req, res, next) => {
 })
 
 
+router.get('/:category', async (req, res, next) => {
+    try {
+        const { data } = await Product.findAll(req.params.category, {
+            where: {
+                category: req.params.category,
+            },
+            include: [Product],
+        });
+        res.send(data);
+    } catch (error) {
+        next(error);
+    }
+});
+
 router.post('/', async (req, res, next) => {
     try {
         const product = await Product.create(req.body);

@@ -6,7 +6,7 @@ import Home from '../features/home/Home';
 import { me } from './store';
 import { NewUserForm } from '../features/NewUserComponent';
 import { ContactPage } from '../features/contactComponent';
-import { AllProducts } from '../features';
+import { AllProducts, Footer, UserProfile} from '../features';
 import Product from '../features/product/Product';
 import UserProfile from '../features/userProfile/userProfile';
 import PageNotFound from '../features/404NotFound/PageNotFound';
@@ -14,7 +14,6 @@ import UserProfile from '../features/userProfile/userProfile'
 import { Cart } from '../features/cart/Cart';
 import { TestProducts } from '../features/cart/testProducts';
 import Checkout, { Stripe } from '../features/cart/CheckoutTest';
-
 
 /**
  * COMPONENT
@@ -30,6 +29,9 @@ const AppRoutes = () => {
 
     return (
         <div>
+            <Routes>
+                <Route path="/contacts" element={<ContactPage />} />
+            </Routes>
             {isLoggedIn ? (
                 <Routes>
                     <Route path="/*" element={<PageNotFound />} />

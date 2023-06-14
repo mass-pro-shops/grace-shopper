@@ -22,19 +22,24 @@ const AllProducts = () => {
                 <div className="products-container">
                     {productsList && productsList.length ? (
                         productsList.map((product) => (
-                            <div key={product.id} className="product-card">
-                                <h3>{product.name}</h3>
-                                <Link to={`./${product.id}`}>
-                                    <img
-                                        src={product.image}
-                                        alt={product.name}
-                                    />
-                                </Link>
-                                <button className="buy-button">
-                                    <span className="material-symbols-outlined">
-                                        add_shopping_cart
-                                    </span>
-                                </button>
+                            <div key={product.id} className="card">
+                                <div className="card-img">
+                                    <Link to={`./${product.id}`}>
+                                        <img
+                                            src={product.image}
+                                            alt={product.name}
+                                        />
+                                    </Link>
+                                </div>
+                                <div className="card-infos">
+                                    <h3 className="card-title">
+                                        {product.name}
+                                    </h3>
+                                    <h2 className="price">{product.price}</h2>
+                                    <a href="#" className="buy">
+                                        Buy Now
+                                    </a>
+                                </div>
                             </div>
                         ))
                     ) : (

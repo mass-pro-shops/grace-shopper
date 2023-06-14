@@ -1,9 +1,13 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { editUser, fetchSingleUser } from './userProfileSlice';
+import { editUser, fetchSingleUser,deleteUser } from './userProfileSlice';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../auth/authSlice';
 
 const UserProfile = (props) => {
     const dispatch = useDispatch()
+    const navigate = useNavigate();
+    
 
     const currentUser = useSelector((state) => state.auth.me)
     const singleUser = useSelector((state) => {
@@ -40,6 +44,12 @@ const UserProfile = (props) => {
         } catch (err) {
             console.log(err)
         }
+    }
+
+    function handleClick(id) {
+        dispatch(deleteUser(id))
+        dispatch(logout());
+        navigate('/login');
     }
     
     useEffect(() => {
@@ -100,6 +110,7 @@ const UserProfile = (props) => {
                     </div>
                     <button type="submit">Update</button>
                 </form>
+                <button onClick={() =>handleClick(currentUser.id)}>Delete</button>
             </div>
       </div>
     );

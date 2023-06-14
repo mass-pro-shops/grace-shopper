@@ -1,7 +1,6 @@
 const router = require('express').Router();
-const {
-    models: { Product },
-} = require('../db');
+const Product = require('../db/models/Product')
+
 
 router.get('/', async (req, res, next) => {
     try {
@@ -12,12 +11,30 @@ router.get('/', async (req, res, next) => {
     }
 });
 
-router.get('/:id', async (req, res, next) => {
+
+router.get("/:id", async ( req, res, next) => {
     try {
-        const product = await Product.findByPk(req.params.id);
-        res.send(product);
-    } catch (err) {
-        next(err);
+        const singleProductId = req.params.id
+        const singleProduct = await Product.findByPk(singleProductId)
+        
+        res.send(singleProduct)
+    } catch (error) {
+        next(error)
+    }
+})
+
+
+router.get('/:category', async (req, res, next) => {
+    try {
+        const { data } = await Product.findAll(req.params.category, {
+            where: {
+                category: req.params.category,
+            },
+            include: [Product],
+        });
+        res.send(data);
+    } catch (error) {
+        next(error);
     }
 });
 

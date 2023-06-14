@@ -1,0 +1,41 @@
+.footer {
+    display:flex;
+    justify-content: space-around;
+    border-top:1px solid black;
+    height: 4rem;
+    margin-top: auto; 
+  }
+
+#app {
+    height:100vh;
+}
+
+.mainContentContainer{
+    display:flex;
+    flex-direction: column;
+    align-content: space-between;
+    height:100%
+}
+  
+.userProfileContainer {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    width:50%;
+    margin: 5em auto 5em auto;
+    border: 1px solid black;
+}
+
+.userProfileFrom {
+    display:flex;
+    flex-direction: column;
+}
+
+.userProfileFrom > button {
+    margin: 1em;
+}
+
+.userProfileContainer > button {
+    width:53%;
+    margin: 1em;
+}

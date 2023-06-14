@@ -58,61 +58,58 @@ const UserProfile = (props) => {
     },[dispatch])
 
     return (
-      <div>
-        <h3>Welcome, {singleUser.name}</h3>
-        <div >
+      <div className="userProfileContainer">
             <h2>User Update Form</h2>
-                <form onSubmit={handleSubmit}>
-                    <div className="contElement">
-                        <label htmlFor="username">User Name: {singleUser.username}</label>
-                        <input 
-                        type="text" 
-                        name="username" 
-                        value={userName}
-                        onChange={(e) => setUserName(e.target.value)}
-                        />
-                    </div>
-                    <div className="contElement">
-                        <label htmlFor="name">Name: {singleUser.name}</label>
-                        <input 
-                        type="text" 
-                        name="name" 
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                        />
-                    </div>
-                    {/* <div className="contElement">
-                        <label htmlFor="email">email: {singleUser.email}</label>
-                        <input 
-                        type="text" 
-                        name="email" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        />
-                    </div> */}
-                    <div className="contElement">
-                        <label htmlFor="password">password: </label>
-                        <input 
-                        type="text" 
-                        name="password" 
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        />
-                    </div>
-                    <div className="contElement">
-                        <label htmlFor="address">address: {singleUser.address}</label>
-                        <input 
-                        type="text" 
-                        name="address" 
-                        value={address}
-                        onChange={(e) => setAddress(e.target.value)}
-                        />
-                    </div>
-                    <button type="submit">Update</button>
-                </form>
-                <button onClick={() =>handleClick(currentUser.id)}>Delete</button>
-            </div>
-      </div>
+            <form onSubmit={handleSubmit} className="userProfileFrom">
+                <div className="contElement">
+                    <label htmlFor="username">User Name: {singleUser.username}</label>
+                    <input 
+                    type="text" 
+                    name="username" 
+                    value={userName}
+                    onChange={(e) => setUserName(e.target.value)}
+                    />
+                </div>
+                <div className="contElement">
+                    <label htmlFor="name">Name: {singleUser.name}</label>
+                    <input 
+                    type="text" 
+                    name="name" 
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    />
+                </div>
+                {/* <div className="contElement">
+                    <label htmlFor="email">email: {singleUser.email}</label>
+                    <input 
+                    type="text" 
+                    name="email" 
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    />
+                </div> */}
+                <div className="contElement">
+                    <label htmlFor="password">password: </label>
+                    <input 
+                    type="text" 
+                    name="password" 
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    />
+                </div>
+                <div className="contElement">
+                    <label htmlFor="address">address: {singleUser.address}</label>
+                    <input 
+                    type="text" 
+                    name="address" 
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                    />
+                </div>
+                <button type="submit">Update</button>
+            </form>
+            <button onClick={() =>handleClick(currentUser.id)}>Delete</button>
+        </div>
     );
   };
   

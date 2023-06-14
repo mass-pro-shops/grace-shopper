@@ -6,9 +6,8 @@ import Home from '../features/home/Home';
 import { me } from './store';
 import { NewUserForm } from '../features/NewUserComponent';
 import { ContactPage } from '../features/contactComponent';
-import { AllProducts } from '../features';
+import { AllProducts, Footer, UserProfile} from '../features';
 import Product from '../features/product/Product';
-import UserProfile from '../features/userProfile/userProfile'
 
 
 /**
@@ -25,6 +24,9 @@ const AppRoutes = () => {
 
     return (
         <div>
+            <Routes>
+                <Route path="/contacts" element={<ContactPage />} />
+            </Routes>
             {isLoggedIn ? (
                 <Routes>
                     <Route path="/*" element={<Home />} />

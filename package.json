@@ -29,11 +29,13 @@
         "jsonwebtoken": "^8.5.1",
         "morgan": "^1.10.0",
         "pg": "^8.8.0",
+        "sequelize": "^6.32.0"
         "react-format-currency": "^0.1.2",
         "react-number-format": "^5.2.2",
         "react-stripe-checkout": "^2.6.3",
         "react-use-cart": "^1.13.0",
         "sequelize": "^6.25.3"
+
     },
     "devDependencies": {
         "@babel/core": "^7.19.6",

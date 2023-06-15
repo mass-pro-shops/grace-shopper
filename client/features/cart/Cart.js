@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useCart } from "react-use-cart";
-import Checkout from "./CheckoutTest";
+import Checkout from "./Checkout";
 
 export const Cart = () => {
     const {
@@ -49,34 +49,37 @@ export const Cart = () => {
         minimumFractionDigits: 2
     })
 
-    if(isEmpty) return <p>Your cart it empty!</p>
+    if(isEmpty) return <p className="cartComp">Your cart is empty!</p>
 
     return (
-        <div>
+        <div className = "cartComp">
             <h1>Cart ({totalUniqueItems})</h1>
-            <ul>
+            <div>
                 {items.map((item) => (
-                    <li key={item.id}>
-                        {item.quantity} {item.name} {formatter.format(`${item.price}`)} &mdash;
+                    <div key={item.id} className = "cartCard">
+                        <p>{item.name}</p>
+                        <p>Price:{formatter.format(`${item.price}`)}</p>
+                        <small>Qty: {item.quantity}</small>
                         <button
-                        onClick={() => updateItemQuantity(item.id, item.quantity - 1, totalPrice(item.price, "minus"))}
-                        >
-                        -
-                        </button>
-                        <button
+                        className = "cartButton"
                         onClick={() => updateItemQuantity(item.id, item.quantity + 1, totalPrice(item.price, "add"))}
                         >
-                        +
+                        Add
                         </button>
-                        <button onClick={() => removeItem(item.id)}>Remove item</button>
-                    </li>
+                        <button 
+                        className ="cartButton"
+                        onClick={() => updateItemQuantity(item.id, item.quantity - 1, totalPrice(item.price, "minus"))}
+                        >
+                        Remove
+                        </button>
+                    </div>
                 ))}
-                {formatter.format(`${total}`)}
-                <Checkout 
-                    name={"total items"}
-                    amount={total}/>
-                <button onClick={() => emptyCart()}>Empty cart</button>
-            </ul>
+                <div className = "checkOutCard">
+                    <p>Total:{formatter.format(`${total}`)}</p>               
+                    <button onClick={() => emptyCart()}>Empty cart</button>
+                    <Checkout name={"total items"} amount={total}/>
+                </div>
+            </div>
         </div>
     )
 }

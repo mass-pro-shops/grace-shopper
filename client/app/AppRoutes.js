@@ -13,7 +13,7 @@ import PageNotFound from '../features/404NotFound/PageNotFound';
 
 import { Cart } from '../features/cart/Cart';
 import { TestProducts } from '../features/cart/testProducts';
-import Checkout, { Stripe } from '../features/cart/CheckoutTest';
+import Checkout, { Stripe } from '../features/cart/Checkout';
 
 /**
  * COMPONENT

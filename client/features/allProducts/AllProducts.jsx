@@ -3,10 +3,22 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchAllProducts, getAllProducts } from './allProducts';
 import { Link } from 'react-router-dom';
 import { Categories } from '../index';
+import { useCart } from 'react-use-cart';
 
 const AllProducts = () => {
     const dispatch = useDispatch();
     const productsList = useSelector(getAllProducts);
+    const {addItem} = useCart()
+
+    const clickHandler = () => {
+        window.alert('Item added to cart!')
+    }
+   
+    const formatter = new Intl.NumberFormat('en-us', {
+        style: 'currency',
+        currency: 'USD',
+        minimumFractionDigits: 2
+    })
 
     useEffect(() => {
         dispatch(fetchAllProducts());
@@ -35,10 +47,10 @@ const AllProducts = () => {
                                     <h3 className="card-title">
                                         {product.name}
                                     </h3>
-                                    <h2 className="price">{product.price}</h2>
-                                    <a href="#" className="buy">
-                                        Buy Now
-                                    </a>
+                                    <h2 className="price">{formatter.format(`${product.price}`)}</h2>
+                                    <button onClick={() => {addItem(product), clickHandler()}} className="buy">
+                                        Add to cart
+                                    </button>
                                 </div>
                             </div>
                         ))

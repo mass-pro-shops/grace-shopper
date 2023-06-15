@@ -45,10 +45,9 @@ const AdminView = (props) => {
     }
 
     const handleClick = (whatToShow) => {
+        dispatch(fetchUsers());
         setDisplay(whatToShow)
-        if(users[0]) {
-            dispatch(fetchUsers());
-        }
+        
     }
     
     useEffect(() => {

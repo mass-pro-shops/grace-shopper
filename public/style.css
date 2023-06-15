@@ -116,16 +116,10 @@ nav {
     margin: 0 20px;
 }
 
-.navbar__cart {
-    border: 1px solid darkgray;
-    padding: 10px;
-}
-
 .navbar__dropdown {
     display: inline-block;
     position: relative;
     font-size: 16px;
-    border: 1px solid darkgray;
     width: 100px;
 }
 

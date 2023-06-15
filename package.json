@@ -34,12 +34,12 @@
         "material-ui": "^0.20.2",
         "morgan": "^1.10.0",
         "pg": "^8.8.0",
-        "sequelize": "^6.32.0"
+        "sequelize": "^6.32.0",
         "react-format-currency": "^0.1.2",
         "react-number-format": "^5.2.2",
         "react-stripe-checkout": "^2.6.3",
-        "react-use-cart": "^1.13.0",
-        "sequelize": "^6.25.3"
+        "react-use-cart": "^1.13.0"
+
 
     },
     "devDependencies": {

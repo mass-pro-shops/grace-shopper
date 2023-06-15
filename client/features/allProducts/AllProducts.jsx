@@ -24,7 +24,7 @@ const AllProducts = () => {
                         productsList.map((product) => (
                             <div key={product.id} className="card">
                                 <div className="card-img">
-                                    <Link to={`./${product.id}`}>
+                                    <Link to={`/products/${product.id}`}>
                                         <img
                                             src={product.image}
                                             alt={product.name}

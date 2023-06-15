@@ -1,9 +1,7 @@
-
-*{
-  margin:0
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 :root {
     --body-first-color: #212121;
     --body-second-color: #191919;
@@ -19,8 +17,8 @@
 }
 
 body {
-  font-family: sans-serif;
-  margin:0;
+    font-family: sans-serif;
+    margin: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -46,55 +44,56 @@ form div {
     display: inline-block;
 }
 
-.navbar{
-  height: 4rem;
-  display: flex;
-  align-items: center;
-  /* background-color: blue; */
-  position: sticky;
-  top:0;
-  z-index: 100;
-  background-color: black;
+.navbar {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+    /* background-color: blue; */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: black;
 }
 
-nav{
-  flex:1
+nav {
+    flex: 1;
 }
 
-
-.navbar__right{
-  display: flex;
-  flex: 1;
-  gap: 5px;
-  justify-content: flex-end;
-  align-items: center;
-  margin-left: auto;
+.navbar__right {
+    display: flex;
+    flex: 1;
+    gap: 5px;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
 }
 
-.navbar__logo{
-  width: 100px;
-  height: 60px;
-  margin-left:15px;
+.navbar__logo {
+    width: 100px;
+    height: 60px;
+    margin-left: 15px;
 }
 
-.navbar__logo:hover{
-  width: 110px;
-  height: 65px;
+.navbar__logo:hover {
+    width: 110px;
+    height: 65px;
 }
 
 .navbar__cart {
-  padding: 15px;
-  color:white;
-  text-decoration: none;
+    padding: 15px;
+    color: white;
+    text-decoration: none;
 }
 
-.navbar__cartIcon{
-  text-decoration: none;
-  color:white
+.navbar__cartIcon {
+    text-decoration: none;
+    color: white;
 }
 
-.navbar__cart:hover .navbar__cartIcon:hover{
-  color:rgb(195, 195, 195);
+.navbar__cart:hover .navbar__cartIcon:hover {
+    color: rgb(195, 195, 195);
+}
+
 .navbar {
     height: 60px;
     display: flex;
@@ -138,47 +137,45 @@ nav{
     box-sizing: border-box;
 }
 
-.navbar__dropdownButton{
-  height:100%;
-  width: 70px;
-  margin-right: 5px;
+.navbar__dropdownButton {
+    height: 100%;
+    width: 70px;
+    margin-right: 5px;
 }
-
-
-.navbar__dropdownContent{
-  display: none;
-  position: absolute;
-  width: 200px;
-  max-height: 200px;
-  overflow: auto;
-  box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.4);
-  right:0;
-  padding-top:15px;
-  font-weight: 600;
-} 
-
-.navbar__dropdownContent > button {
-  padding:5px;
-  margin-left: 20px;
-  margin-bottom: 20px;
-  width: 150px;
-  font-weight: 600;
-}
-
-.navbar__dropdown:hover .navbar__dropdownContent{
 
 .navbar__dropdownContent {
     display: none;
     position: absolute;
-    width: 100%;
+    width: 200px;
+    max-height: 200px;
     overflow: auto;
     box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+    right: 0;
+    padding-top: 15px;
+    font-weight: 600;
+}
+
+.navbar__dropdownContent > button {
+    padding: 5px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    width: 150px;
+    font-weight: 600;
 }
 
 .navbar__dropdown:hover .navbar__dropdownContent {
+    .navbar__dropdownContent {
+        display: none;
+        position: absolute;
+        width: 100%;
+        overflow: auto;
+        box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+    }
+}
+.navbar__dropdown:hover .navbar__dropdownContent {
     display: block;
-    right:0;
-    color:rgb(195, 195, 195);
+    right: 0;
+    color: rgb(195, 195, 195);
 }
 
 .navbar__dropdown a {
@@ -189,42 +186,41 @@ nav{
 }
 
 .navbar__dropdownContent a:hover {
-  background-color: darkgray;
+    background-color: darkgray;
 }
 
-.navbar__allproducts{
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  color: white;
+.navbar__allproducts {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: white;
 }
 
-.navbar__allproducts:hover{
-  color:rgb(195, 195, 195);
-  font-weight: 700;
+.navbar__allproducts:hover {
+    color: rgb(195, 195, 195);
+    font-weight: 700;
 }
 
-.navbar__hi{
-  display: flex;
-  align-items: center;
-  font-weight: 600;
-  color: white;
+.navbar__hi {
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    color: white;
 }
 
-
-.pagenotfoundDiv{
-  display: flex;
-  justify-content: center;
-  width: 100vw;
-  height: 100vh;
+.pagenotfoundDiv {
+    display: flex;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
 }
 
-.pagenotfoundImage{
-  width: 100%;
-  height: 100%;
-=======
+.pagenotfoundImage {
+    width: 100%;
+    height: 100%;
     background-color: red;
 }
+
 /* Main Section */
 .main-section {
     display: flex;

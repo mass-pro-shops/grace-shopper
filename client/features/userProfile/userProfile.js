@@ -51,7 +51,7 @@ const UserProfile = (props) => {
 
     useEffect(() => {
         dispatch(fetchSingleUser(currentUser.id));
-    }, [dispatch]);
+    }, []);
 
     return (
         <div className="userProfileContainer">
@@ -107,8 +107,8 @@ const UserProfile = (props) => {
                     />
                 </div>
                 <button type="submit">Update</button>
+                <button onClick={() => handleClick(currentUser.id)}>Delete</button>
             </form>
-            <button onClick={() => handleClick(currentUser.id)}>Delete</button>
         </div>
     );
 };

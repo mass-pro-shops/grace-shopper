@@ -8,6 +8,7 @@
 
 #app {
     height:100vh;
+    width:100%;
 }
 
 .mainContentContainer{
@@ -24,6 +25,7 @@
     width:50%;
     margin: 5em auto 5em auto;
     border: 1px solid black;
+    background-color: white;
 }
 
 .userProfileFrom {
@@ -35,7 +37,38 @@
     margin: 1em;
 }
 
-.userProfileContainer > button {
-    width:53%;
-    margin: 1em;
+.categoriesAndContentContainer {
+    display: flex;
+    margin-top: 5em;
+    border:1px solid black;
+    background-color: white;
+}
+
+.categories {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex: 1;
+    border:1px solid black;
+}
+
+.mainContent {
+    text-align: center;
+    flex: 3;
+}
+
+.adminSingleUser {
+    justify-content: space-around;
+    display: flex;
+    padding: 1em;
+    width:90%;
+    margin: .5em auto;
+    border:1px solid black;
+    padding:.3em;
+
+}
+
+.adminSingleUser > div {
+    flex:1;
+    padding: .2em;
 }

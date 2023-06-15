@@ -2,16 +2,19 @@ const router = require('express').Router();
 const {
     models: { User },
 } = require('../db');
+const {requireToken} = require('./gateKeepingMiddleware')
+
 module.exports = router;
 
 //GET /api/users
-router.get('/', async (req, res, next) => {
+router.get('/',requireToken, async (req, res, next) => {
     try {
+        console.log(req.user)
         const users = await User.findAll({
             // explicitly select only the id and username fields - even though
             // users' passwords are encrypted, it won't help if we just
             // send everything to anyone who asks!
-            attributes: ['id', 'username'],
+            attributes: ['id', 'username','address','name', 'email'],
         });
         res.json(users);
     } catch (err) {

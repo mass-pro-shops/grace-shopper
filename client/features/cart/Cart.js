@@ -1,110 +1,62 @@
-// import React, { useEffect, useState } from "react";
-// import {useCart } from "react-use-cart";
-// import Checkout from "./CheckoutTest";
-
-// export const Cart = () => {
-//     const {
-//         isEmpty,
-//         totalUniqueItems,
-//         items,
-//         updateItemQuantity,
-//         removeItem,
-//         emptyCart,
-//     } = useCart()
-
-//     const [total,setTotal] = useState(0)
-
-//     useEffect(() => {
-//         getTotal()
-//     }, [])
-
-//     const totalPrice = (price, method) => {
-//         if(method === "minus" && total >= 0) {
-//             if(result <= 0) {
-//                 setTotal(0)
-//             }
-//             const result = total - price;
-//             setTotal(result)
-//         } else {
-//             const result = total + price
-//             setTotal(result)
-//         }
-//     };
-
-
-//     const getTotal = () => {
-//         let res = 0
-//         if(items === undefined) {
-//             return setTotal(0)
-//         }
-//         for(let i = 0; i < items.length; i++) {
-//             res += items[i].price
-//         }
-//         setTotal(res)
-//     }
-
-//     const formatter = new Intl.NumberFormat('en-us', {
-//         style: 'currency',
-//         currency: 'USD',
-//         minimumFractionDigits: 2
-//     })
-
-//     if(isEmpty) return <p>Your cart it empty!</p>
-
-//     return (
-//         <div>
-//             <h1>Cart ({totalUniqueItems})</h1>
-//             <ul>
-//                 {items.map((item) => (
-//                     <li key={item.id}>
-//                         {item.quantity} {item.name} {formatter.format(`${item.price}`)} &mdash;
-//                         <button
-//                         onClick={() => updateItemQuantity(item.id, item.quantity - 1, totalPrice(item.price, "minus"))}
-//                         >
-//                         -
-//                         </button>
-//                         <button
-//                         onClick={() => updateItemQuantity(item.id, item.quantity + 1, totalPrice(item.price, "add"))}
-//                         >
-//                         +
-//                         </button>
-//                         <button onClick={() => removeItem(item.id)}>Remove item</button>
-//                     </li>
-//                 ))}
-//                 {formatter.format(`${total}`)}
-//                 <Checkout 
-//                     name={"total items"}
-//                     amount={total}/>
-//                 <button onClick={() => emptyCart()}>Empty cart</button>
-//             </ul>
-//         </div>
-//     )
-// }
-
-
-// Attempt to use cart schema 
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { allCartItems, fetchCartItems } from "./cartSlice";
+import { addItem, decreaseCart, getCart, removeFromCart, clearCart } from "./cartSlice";
+import { Link } from "react-router-dom";
 
 export const Cart = () => {
     const dispatch = useDispatch()
-    const cartItems = useSelector(allCartItems)
+    const cart = useSelector(getCart)
+    
+    const removeHandler = (item) => {
+        dispatch(removeFromCart(item))
+    }
 
-    useEffect(()=> {
-        dispatch(fetchCartItems())
-    },[dispatch])
+    const decreaseItem = (item) => {
+        dispatch(decreaseCart(item))
+    }
+
+    const increaseItem = (item) => {
+        dispatch(addItem(item))
+    }
+    
+    const clearCartHandler = () => {
+        dispatch(clearCart())
+    };
 
     return (
-        <div>
-            {cartItems && cartItems.length ? (
-                cartItems.map((item) => (
-                    <p>{item.name}</p>
+        <div className = "cartCard">
+            {cart.cartItems && cart.cartItems.length ? (
+                cart.cartItems.map((item) => (
+                    <div key = {item.id}>
+                        <h2>{item.name}</h2>
+                        <button onClick={() => removeHandler(item)}>remove</button>
+                        <img className = 'cartImage' src = {item.image}/>
+                        <small>${item.price}</small>
+                        <button onClick={() => decreaseItem(item)}>-</button>
+                        <small>QTY: {item.cartQuantity}</small>
+                        <button onClick ={() => increaseItem(item)}>+</button>
+                        <p>${`${item.price * item.cartQuantity}`}</p>
+                    </div>
                 ))
             ): (
-                <p>Cart empty!</p>
+                <div>
+                    <h1>Cart empty!</h1>
+                    <Link to ='/home'>Start shopping!</Link>
+                </div>
             )}
+            <div>
+                <button onClick={() => clearCartHandler()}>Clear cart</button>
+            </div>
+            <div className = "cartTotal">
+                <span>Subtotal:  </span>
+                <span>${`${cart.cartTotalAmount}`}</span>
+            </div>
+            <div>
+                <small>Taxes and shipping calculated at checkout.</small>
+                <button>Checkout</button>
+                <Link to ='/home'>Continue shopping.</Link>
+            </div>
         </div>
     )
 }

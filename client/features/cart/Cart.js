@@ -83,3 +83,28 @@
 
 
 // Attempt to use cart schema 
+import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { allCartItems, fetchCartItems } from "./cartSlice";
+
+export const Cart = () => {
+    const dispatch = useDispatch()
+    const cartItems = useSelector(allCartItems)
+
+    useEffect(()=> {
+        dispatch(fetchCartItems())
+    },[dispatch])
+
+    return (
+        <div>
+            {cartItems && cartItems.length ? (
+                cartItems.map((item) => (
+                    <p>{item.name}</p>
+                ))
+            ): (
+                <p>Cart empty!</p>
+            )}
+        </div>
+    )
+}

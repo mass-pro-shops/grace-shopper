@@ -1,8 +1,10 @@
 const router = require('express').Router()
+const Cart = require('../db/models/Cart')
 
 router.get('/', async(req,res,next) => {
     try {
-        res.send('get/cart')
+        const cart = await Cart.findAll()
+        res.send(cart)
     } catch(error) {
         throw new Error(error)
     }

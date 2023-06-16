@@ -10,6 +10,7 @@ const AllProducts = () => {
     const [category, setCategory] = useState('');
     const productsList = useSelector(getAllProducts);
 
+
     const handleClick = (category) => {
         setFiltered(true);
         setCategory(category.category.toLowerCase());

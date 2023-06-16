@@ -27,6 +27,13 @@ async function seed() {
             name: 'Cody',
             address: '123 main',
         }),
+        User.create({
+            username: 'admin',
+            password: '123',
+            name: 'admin',
+            address: '123 main',
+            isAdmin:true,
+        }),
     ]);
 
     const products = await Promise.all([

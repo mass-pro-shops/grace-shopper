@@ -1,18 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { editUser, fetchSingleUser, deleteUser } from './userProfileSlice';
-import { useNavigate } from 'react-router-dom';
-import { logout } from '../auth/authSlice';
+import React, { useEffect,useState } from "react";
+import { useDispatch } from 'react-redux';
+import { editUser, deleteUser } from '../userProfile/userProfileSlice';
+import { fetchUsers, fetchProducts } from "../adminView/adminViewSlice";
 
-const UserProfile = (props) => {
+const UserUpdate = (props) => {
     const dispatch = useDispatch();
-    const navigate = useNavigate();
-
-    const currentUser = useSelector((state) => state.auth.me);
-    const singleUser = useSelector((state) => {
-        return state.singleUser.singleUser;
-    });
-
     const [name, setName] = useState('');
     const [userName, setUserName] = useState('');
     // const [email, setEmail] = useState("")
@@ -27,7 +19,7 @@ const UserProfile = (props) => {
             // email:email,
             password: password,
             address: address,
-            id: currentUser.id,
+            id: props.user.id,
         };
 
         try {
@@ -45,21 +37,17 @@ const UserProfile = (props) => {
 
     function handleClick(id) {
         dispatch(deleteUser(id));
-        dispatch(logout());
-        navigate('/login');
     }
 
     useEffect(() => {
-        dispatch(fetchSingleUser(currentUser.id));
+        dispatch(fetchUsers());
     }, [dispatch]);
 
     return (
-        <div className="userProfileContainer">
-            <h2>User Update Form</h2>
-            <form onSubmit={handleSubmit} className="updateForm">
+        <form onSubmit={handleSubmit} className="updateForm">
                 <div className="contElement">
                     <label htmlFor="username">
-                        User Name: {singleUser.username}
+                        User Name: {props.user.username}
                     </label>
                     <input
                         type="text"
@@ -69,7 +57,7 @@ const UserProfile = (props) => {
                     />
                 </div>
                 <div className="contElement">
-                    <label htmlFor="name">Name: {singleUser.name}</label>
+                    <label htmlFor="name">Name: {props.user.name}</label>
                     <input
                         type="text"
                         name="name"
@@ -78,7 +66,7 @@ const UserProfile = (props) => {
                     />
                 </div>
                 {/* <div className="contElement">
-                    <label htmlFor="email">email: {singleUser.email}</label>
+                    <label htmlFor="email">email: {props.user.email}</label>
                     <input
                     type="text"
                     name="email"
@@ -97,7 +85,7 @@ const UserProfile = (props) => {
                 </div>
                 <div className="contElement">
                     <label htmlFor="address">
-                        address: {singleUser.address}
+                        address: {props.user.address}
                     </label>
                     <input
                         type="text"
@@ -107,10 +95,9 @@ const UserProfile = (props) => {
                     />
                 </div>
                 <button type="submit">Update</button>
-                <button onClick={() => handleClick(currentUser.id)}>Delete</button>
+                <button onClick={() => handleClick(props.user.id)}>Delete</button>
             </form>
-        </div>
-    );
-};
+    )
+}
 
-export default UserProfile;
+export default UserUpdate

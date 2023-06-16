@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Product = require('../db/models/Product')
-
+const {requireToken} = require('./gateKeepingMiddleware')
 
 router.get('/', async (req, res, next) => {
     try {
@@ -37,6 +37,17 @@ router.get('/:category', async (req, res, next) => {
         next(error);
     }
 });
+
+router.put('/:id', async (req,res,next) => {
+    try{
+        const newInfo = req.body;
+        const product = await Product.findByPk(req.params.id)
+        const updateProduct = await product.update(newInfo);
+        res.send(updateProduct)
+    }catch(err){
+        next(err)
+    }
+})
 
 router.post('/', async (req, res, next) => {
     try {

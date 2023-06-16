@@ -9,7 +9,10 @@ module.exports = router;
 //GET /api/users
 router.get('/',requireToken, async (req, res, next) => {
     try {
-        console.log(req.user)
+
+        if (!req.user.isAdmin){
+            return res.status(403).send("ah ah ah, you didn't say the magic word")
+        }
         const users = await User.findAll({
             // explicitly select only the id and username fields - even though
             // users' passwords are encrypted, it won't help if we just

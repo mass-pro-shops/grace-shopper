@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsers, fetchProducts } from "./adminViewSlice";
+import UserUpdate from "../updateForms/UserUpdate";
+import ProductUpdate from "../updateForms/ProductUpdate";
 
 const AdminView = (props) => {
     const dispatch = useDispatch();
     const [display, setDisplay] = useState("users")
+    const [selectedForm, setSelectedForm] = useState(null);
+    const [expanded, setExpanded] = useState(false)
 
     const users = useSelector((state) => {
         return state.adminView.users;
@@ -14,17 +18,29 @@ const AdminView = (props) => {
         return state.adminView.products;
     });
 
+    const handleExpand = (id) => {
+        setSelectedForm(id)
+        setExpanded(!expanded)
+    }
+    // const editClick = (id) => {
+    //     console.log(id)
+    //     setSelectedForm(id)
+    // }
     const displayContent = () => {
         
         //console.log(users)
         if (display === "users" && users) {
              return users.map(el => {
                 return (
-                    <div className="adminSingleUser">
-                        <div>{el.name}</div>
-                        <div>{el.username}</div>
-                        <div>{el.address}</div>
-                        <div>{el.email}</div>
+                    <div className="flexColumn">
+                        <div className="adminSingleUser">
+                            <div>{el.name}</div>
+                            <div>{el.username}</div>
+                            <div>{el.address}</div>
+                            <div>{el.email}</div>
+                            <button className='editButton' onClick={() => handleExpand(el.id)}>Edit</button>
+                        </div>
+                        {expanded ? selectedForm === el.id && <UserUpdate user={el}/>: <></> }
                     </div>
                 )
             })
@@ -33,12 +49,16 @@ const AdminView = (props) => {
         if (display === "products" && products) {
             return products.map(el => {
                return (
-                   <div className="adminSingleUser">
-                       <div>{el.name}</div>
-                       <div>{el.price}</div>
-                       <div>{el.description}</div>
-                       <div>{el.quantity}</div>
-                   </div>
+                    <div className="flexColumn">
+                        <div className="adminSingleUser">
+                            <div>{el.name}</div>
+                            <div>{el.price}</div>
+                            <div>{el.description}</div>
+                            <div>{el.quantity}</div>
+                            <button className='editButton' onClick={() => handleExpand(el.id)}>Edit</button>
+                        </div>
+                        {expanded ? selectedForm === el.id && <ProductUpdate product={el}/>: <></> }
+                    </div>
                )
            })
        }

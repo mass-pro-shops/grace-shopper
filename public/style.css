@@ -416,6 +416,7 @@ nav {
 .cart-item {
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     border-bottom: 1px solid black;
 }
 
@@ -429,4 +430,20 @@ nav {
     display: flex;
     flex-direction: row;
     margin-top: 60px;
+}
+
+.cart-total-checkout {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cart-checkout {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.cart-total {
+    display: flex;
+    flex-direction: column;
 }

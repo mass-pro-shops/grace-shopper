@@ -39,7 +39,7 @@ export const Cart = () => {
                             <h3>Product: {item.name}</h3>
                             <img className = 'cart-image' src = {item.image}/>
                             <p>Price: ${item.price}</p>
-                            <p>Subtotal: ${`${item.price * item.cartQuantity}`}</p>
+                            <p>Total: ${`${item.price * item.cartQuantity}`}</p>
                         </div>
                         <div className = "item-buttons">
                             <Button variant = "secondary" className = 'incButton' onClick ={() => increaseItem(item)}>+</Button> 
@@ -58,15 +58,13 @@ export const Cart = () => {
                 </div>
             )}
             </div>
-            <div>
-                <Button variant="primary" onClick={() => clearCartHandler()}>Clear cart</Button>
-            </div>
             <div className ="cart-total-checkout">
-                <div className = "cartTotal">
-                    <span>Subtotal:  </span>
-                    <span>${`${cart.cartTotalAmount}`}</span>
+                <div className = "cart-total">
+                    <span>Subtotal: ${`${cart.cartTotalAmount}`}</span>
+                    <Button variant="primary" onClick={() => clearCartHandler()}>Clear cart</Button>
+    
                 </div>
-                <div>
+                <div class = 'cart-checkout'>
                     <small>Taxes and shipping calculated at checkout.</small>
                     <Button variant="primary">Checkout</Button>
                     <Link to ='/home'>Continue shopping.</Link>

@@ -7,6 +7,7 @@ import userProfileSlice from '../features/userProfile/userProfileSlice'
 import adminViewSlice from '../features/adminView/adminViewSlice';
 import editProductSlice from '../features/updateForms/editProductSlice';
 
+
 const store = configureStore({
     reducer: {
         auth: authReducer,
@@ -15,6 +16,7 @@ const store = configureStore({
         product: productSliceReducer,
         adminView: adminViewSlice,
         editProduct:editProductSlice,
+
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });

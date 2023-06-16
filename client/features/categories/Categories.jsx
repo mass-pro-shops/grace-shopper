@@ -1,22 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import {actions} from '../allProducts/allProducts'
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Categories = (props) => {
     const dispatch = useDispatch();
-    const categories = ['LAPTOP', 'PROJECTOR', 'DESKTOP', 'AUDIO DEVICES'];
-
+    const categories = ['LAPTOPS', 'PROJECTORS', 'DESKTOPS', 'AUDIO'];
 
     return (
         <div className="categories-section">
             <ul className="category-list">
+                <button
+                    className="category-item"
+                    onClick={() => {
+                        props.setFiltered(false);
+                    }}>
+                    ALL
+                </button>
                 {categories.map((category, id) => (
-                    //<Link to={`./products/${category}`} key={id}>
-                        <li key={category.id} className="category-item">
-                            <button onClick= {() => props.handleClick({category})}> {category} </button>
-                        </li>
-                    //</Link>
+                    <li key={category.id}>
+                        <button
+                            className="category-item"
+                            onClick={() => props.handleClick({ category })}>
+                            {category}
+                        </button>
+                    </li>
                 ))}
             </ul>
         </div>

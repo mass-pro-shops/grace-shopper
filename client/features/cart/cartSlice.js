@@ -70,12 +70,28 @@ export const cartSlice = createSlice({
                 position: 'bottom-left'
             })
             localStorage.setItem("cartItems", JSON.stringify(state.cartItems))
+        },
+        getTotals(state,action) {
+            let {total, quantity } = state.cartItems.reduce((cartTotal, cartItem) => {
+                const { price, cartQuantity} = cartItem;
+                const itemTotal = price * cartQuantity
+
+                cartTotal.total += itemTotal
+                cartTotal.quantity += cartQuantity
+
+                return cartTotal
+            },{
+                total: 0,
+                quantity: 0
+            })
+            state.cartTotalQuantity = quantity
+            state.cartTotalAmount = total
         }
     },
     extraReducers: (builder) => {}    
 });
 
-export const {addItem, removeFromCart, decreaseCart, increaseCart, clearCart} = cartSlice.actions
+export const {addItem, removeFromCart, decreaseCart, increaseCart, clearCart, getTotals} = cartSlice.actions
 
 export const getCart = (state) => {
     return state.cart

@@ -4,7 +4,7 @@ import authReducer from '../features/auth/authSlice';
 import productsReducer from '../features/allProducts/allProducts';
 import productSliceReducer from '../features/product/productSlices'
 import userProfileSlice from '../features/userProfile/userProfileSlice'
-import cartSliceReducer from '../features/cart/cartSlice';
+import cartSliceReducer, { getTotals } from '../features/cart/cartSlice';
 
 const store = configureStore({
     reducer: {
@@ -16,6 +16,8 @@ const store = configureStore({
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
+
+store.dispatch(getTotals())
 
 export default store;
 export * from '../features/auth/authSlice';

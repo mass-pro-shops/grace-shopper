@@ -1,13 +1,17 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { addItem, decreaseCart, getCart, removeFromCart, clearCart } from "./cartSlice";
+import { addItem, decreaseCart, getCart, removeFromCart, clearCart, getTotals } from "./cartSlice";
 import { Link } from "react-router-dom";
+import Button from "react-bootstrap/Button";
 
 export const Cart = () => {
     const dispatch = useDispatch()
     const cart = useSelector(getCart)
     
+    useEffect(() => {
+       dispatch(getTotals())
+    }, [cart])
     const removeHandler = (item) => {
         dispatch(removeFromCart(item))
     }
@@ -25,37 +29,48 @@ export const Cart = () => {
     };
 
     return (
-        <div className = "cartCard">
+        <div className = "cart-container">
+            <h1 id = "cart-page-title">Shopping cart</h1>
+            <div className = 'cartItems'>
             {cart.cartItems && cart.cartItems.length ? (
                 cart.cartItems.map((item) => (
-                    <div key = {item.id}>
-                        <h2>{item.name}</h2>
-                        <button onClick={() => removeHandler(item)}>remove</button>
-                        <img className = 'cartImage' src = {item.image}/>
-                        <small>${item.price}</small>
-                        <button onClick={() => decreaseItem(item)}>-</button>
-                        <small>QTY: {item.cartQuantity}</small>
-                        <button onClick ={() => increaseItem(item)}>+</button>
-                        <p>${`${item.price * item.cartQuantity}`}</p>
+                    <div className = "cart-item" key = {item.id}>
+                        <div className = "item-info">
+                            <h3>Product: {item.name}</h3>
+                            <img className = 'cart-image' src = {item.image}/>
+                            <p>Price: ${item.price}</p>
+                            <p>Subtotal: ${`${item.price * item.cartQuantity}`}</p>
+                        </div>
+                        <div className = "item-buttons">
+                            <Button variant = "secondary" className = 'incButton' onClick ={() => increaseItem(item)}>+</Button> 
+                            <p>QTY: {item.cartQuantity}</p>                      
+                            <Button variant ="secondary" className = 'incButton'onClick={() => decreaseItem(item)}>-</Button>                       
+                            <Button variant ="secondary" className = 'incButton' onClick={() => removeHandler(item)}>remove</Button>
+                        </div>
                     </div>
                 ))
             ): (
-                <div>
-                    <h1>Cart empty!</h1>
-                    <Link to ='/home'>Start shopping!</Link>
+                <div className="cart-empty">
+                    <h3>Cart empty!</h3>
+                    <Link to ='/home'>
+                        <span>Start shopping!</span>
+                    </Link>
                 </div>
             )}
-            <div>
-                <button onClick={() => clearCartHandler()}>Clear cart</button>
-            </div>
-            <div className = "cartTotal">
-                <span>Subtotal:  </span>
-                <span>${`${cart.cartTotalAmount}`}</span>
             </div>
             <div>
-                <small>Taxes and shipping calculated at checkout.</small>
-                <button>Checkout</button>
-                <Link to ='/home'>Continue shopping.</Link>
+                <Button variant="primary" onClick={() => clearCartHandler()}>Clear cart</Button>
+            </div>
+            <div className ="cart-total-checkout">
+                <div className = "cartTotal">
+                    <span>Subtotal:  </span>
+                    <span>${`${cart.cartTotalAmount}`}</span>
+                </div>
+                <div>
+                    <small>Taxes and shipping calculated at checkout.</small>
+                    <Button variant="primary">Checkout</Button>
+                    <Link to ='/home'>Continue shopping.</Link>
+                </div>
             </div>
         </div>
     )

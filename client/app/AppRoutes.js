@@ -12,8 +12,6 @@ import Product from '../features/product/Product';
 import PageNotFound from '../features/404NotFound/PageNotFound';
 
 import { Cart } from '../features/cart/Cart';
-import { TestProducts } from '../features/cart/testProducts';
-import Checkout from '../features/cart/CheckoutTest';
 /**
  * COMPONENT
  */
@@ -48,8 +46,6 @@ const AppRoutes = () => {
                     />
                     <Route path="/userProfile" element={<UserProfile />} />
                     <Route path="/cart" element={<Cart />} />
-                    <Route path="/prodTEST" element={<TestProducts />} />
-                    <Route path="/checkoutTEST" element={<Checkout />} />
                     <Route
                         key="product"
                         path="/products/:Id"

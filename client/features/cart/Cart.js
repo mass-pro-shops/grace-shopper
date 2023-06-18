@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { addItem, decreaseCart, getCart, removeFromCart, clearCart, getTotals } from "./cartSlice";
 import { Link } from "react-router-dom";
 import Button from "react-bootstrap/Button";
+import PayButton from "../checkout/PayButton";
 
 export const Cart = () => {
     const dispatch = useDispatch()
@@ -28,7 +29,7 @@ export const Cart = () => {
         dispatch(clearCart())
     };
 
-    return (
+    return ( 
         <div className = "cart-container">
             <h1 id = "cart-page-title">Shopping cart</h1>
             <div className = 'cartItems'>
@@ -66,7 +67,7 @@ export const Cart = () => {
                 </div>
                 <div class = 'cart-checkout'>
                     <small>Taxes and shipping calculated at checkout.</small>
-                    <Button variant="primary">Checkout</Button>
+                    <PayButton cartItems = {cart.cartItems}/>
                     <Link to ='/home'>Continue shopping.</Link>
                 </div>
             </div>

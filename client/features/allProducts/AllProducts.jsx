@@ -17,6 +17,12 @@ const AllProducts = () => {
         dispatch(addItem(product))
     }
     
+    let USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+    
+
     return (
         <div className="main-section">
             <Categories />
@@ -40,7 +46,7 @@ const AllProducts = () => {
                                     <h3 className="card-title">
                                         {product.name}
                                     </h3>
-                                    <h2 className="price">{product.price}</h2>
+                                    <h2 className="price">{USDollar.format(product.price)}</h2>
                                     <button onClick={() => {addToCart(product)}} className="buy">
                                         Buy Now
                                     </button>

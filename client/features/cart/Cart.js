@@ -29,6 +29,12 @@ export const Cart = () => {
         dispatch(clearCart())
     };
 
+    let USDollar = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+    });
+    
+
     return ( 
         <div className = "cart-container">
             <h1 id = "cart-page-title">Shopping cart</h1>
@@ -39,8 +45,8 @@ export const Cart = () => {
                         <div className = "item-info">
                             <h3>Product: {item.name}</h3>
                             <img className = 'cart-image' src = {item.image}/>
-                            <p>Price: ${item.price}</p>
-                            <p>Total: ${`${item.price * item.cartQuantity}`}</p>
+                            <p>Price: {USDollar.format(item.price)}</p>
+                            <p>Total: {USDollar.format(item.price * item.cartQuantity)}</p>
                         </div>
                         <div className = "item-buttons">
                             <Button variant = "secondary" className = 'incButton' onClick ={() => increaseItem(item)}>+</Button> 

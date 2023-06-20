@@ -3,12 +3,15 @@ import { useSelector, useDispatch } from 'react-redux';
 import { fetchUsers, fetchProducts } from "./adminViewSlice";
 import UserUpdate from "../updateForms/UserUpdate";
 import ProductUpdate from "../updateForms/ProductUpdate";
+import AddUser from "../updateForms/AddUser"
+import AddProduct from "../updateForms/AddProduct";
 
 const AdminView = (props) => {
     const dispatch = useDispatch();
-    const [display, setDisplay] = useState("users")
+    const [display, setDisplay] = useState("Users")
     const [selectedForm, setSelectedForm] = useState(null);
     const [expanded, setExpanded] = useState(false)
+    const [addForm, setAddForm] = useState(false)
 
     const users = useSelector((state) => {
         return state.adminView.users;
@@ -22,14 +25,10 @@ const AdminView = (props) => {
         setSelectedForm(id)
         setExpanded(!expanded)
     }
-    // const editClick = (id) => {
-    //     console.log(id)
-    //     setSelectedForm(id)
-    // }
+    
     const displayContent = () => {
         
-        //console.log(users)
-        if (display === "users" && users) {
+        if (display === "Users" && users) {
              return users.map(el => {
                 return (
                     <div className="flexColumn">
@@ -46,7 +45,7 @@ const AdminView = (props) => {
             })
         }
 
-        if (display === "products" && products) {
+        if (display === "Products" && products) {
             return products.map(el => {
                return (
                     <div className="flexColumn">
@@ -69,6 +68,11 @@ const AdminView = (props) => {
         setDisplay(whatToShow)
         
     }
+
+    const addUserForm = (whatToShow) => {
+        whatToShow === addForm ? setAddForm(false):setAddForm(whatToShow)
+        
+    }
     
     useEffect(() => {
         dispatch(fetchUsers());
@@ -78,26 +82,29 @@ const AdminView = (props) => {
     return (
         <div className="categoriesAndContentContainer">
             <div className="categories">
-                admin left side
-                <button onClick={()=>handleClick("products")}>Products</button>
-                <button onClick={()=>handleClick("users")}>Users</button>
+                <button onClick={()=>handleClick("Products")}>Products</button>
+                <button onClick={()=>handleClick("Users")}>Users</button>
             </div>
             <div className="mainContent">
                 <h3>{display}</h3>
-                {display === "users" ? 
+                {display === "Users" ? 
                     <div className="adminSingleUser">
                         <div>Name</div>
                         <div>Username</div>
                         <div>Address</div>
                         <div>Email</div>
+                        <button onClick={() => addUserForm("User")}>Add {display}</button>
                     </div>:
                     <div className="adminSingleUser">
                         <div>Name</div>
                         <div>price</div>
                         <div>description</div>
                         <div>Quantity</div>
+                        <button onClick={() => addUserForm("Product")}>Add {display}</button>
                     </div>
                     }
+                {addForm === "User"? <AddUser /> : <></>}
+                {addForm === "Product"? <AddProduct /> : <></>}
                 {displayContent()}
             </div>
         </div>

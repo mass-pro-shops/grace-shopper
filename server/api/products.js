@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const Product = require('../db/models/Product')
-const {requireToken} = require('./gateKeepingMiddleware')
+const {requireToken, isAdmin} = require('./gateKeepingMiddleware')
 
 router.get('/', async (req, res, next) => {
     try {
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res, next) => {
     }
 });
 
-router.put('/:id', async (req,res,next) => {
+router.put('/:id',requireToken, isAdmin, async (req,res,next) => {
     try{
         const newInfo = req.body;
         const product = await Product.findByPk(req.params.id)
@@ -33,7 +33,7 @@ router.put('/:id', async (req,res,next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', requireToken,isAdmin, async (req, res, next) => {
     try {
         const product = await Product.create(req.body);
         res.send(product);
@@ -42,9 +42,8 @@ router.post('/', async (req, res, next) => {
     }
 });
 
-//only admin users can update products - NEED TO IMPLEMENT
 //DELETE /api/products/:id
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id',requireToken,isAdmin, async (req, res, next) => {
     try {
         const product = await Product.findByPk(req.params.id);
         if (!product) {

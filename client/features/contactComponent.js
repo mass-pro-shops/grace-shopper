@@ -25,7 +25,7 @@ export const ContactPage = () => {
             <div>
                 <h2>Robert Hess</h2>
                 <a href="https://github.com/HRM0">Github</a>
-                <p>Email:hessrobm@gmail.com</p>
+                <p>Email:hessrobm0@gmail.com</p>
                 <a href = "https://www.linkedin.com/in/r-hess/">Linkedin</a>
             </div>
             <div>

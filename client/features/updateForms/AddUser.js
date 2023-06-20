@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useDispatch } from 'react-redux';
-import { editUser, deleteUser } from '../userProfile/userProfileSlice';
-import { fetchUsers, fetchProducts } from "../adminView/adminViewSlice";
+import { fetchUsers} from "../adminView/adminViewSlice";
+import { addUser } from "../userProfile/userProfileSlice";
 
 const UserUpdate = (props) => {
     const dispatch = useDispatch();
@@ -18,12 +18,11 @@ const UserUpdate = (props) => {
             name: name,
             email:email,
             password: password,
-            address: address,
-            id: props.user.id,
+            address: address
         };
 
         try {
-            dispatch(editUser(newUser));
+            dispatch(addUser(newUser));
             setName(newUser.name);
             setUserName(newUser.username);
             setEmail(newUser.email)
@@ -36,10 +35,6 @@ const UserUpdate = (props) => {
        
     };
 
-    function handleClick(id) {
-        dispatch(deleteUser(id));
-    }
-
     useEffect(() => {
         dispatch(fetchUsers());
     }, [dispatch]);
@@ -47,9 +42,7 @@ const UserUpdate = (props) => {
     return (
         <form onSubmit={handleSubmit} className="updateForm">
                 <div className="contElement">
-                    <label htmlFor="username">
-                        User Name: {props.user.username}
-                    </label>
+                <label htmlFor="username">User Name:</label>
                     <input
                         type="text"
                         name="username"
@@ -58,7 +51,7 @@ const UserUpdate = (props) => {
                     />
                 </div>
                 <div className="contElement">
-                    <label htmlFor="name">Name: {props.user.name}</label>
+                    <label htmlFor="name">Name:</label>
                     <input
                         type="text"
                         name="name"
@@ -67,7 +60,7 @@ const UserUpdate = (props) => {
                     />
                 </div>
                 <div className="contElement">
-                    <label htmlFor="email">email: {props.user.email}</label>
+                    <label htmlFor="email">email:</label>
                     <input
                     type="text"
                     name="email"
@@ -85,9 +78,7 @@ const UserUpdate = (props) => {
                     />
                 </div>
                 <div className="contElement">
-                    <label htmlFor="address">
-                        address: {props.user.address}
-                    </label>
+                    <label htmlFor="address">address:</label>
                     <input
                         type="text"
                         name="address"
@@ -95,8 +86,7 @@ const UserUpdate = (props) => {
                         onChange={(e) => setAddress(e.target.value)}
                     />
                 </div>
-                <button type="submit">Update</button>
-                <button onClick={props.delete ?() => props.delete(props.user.id) :() => handleClick(props.user.id)}>Delete</button>
+                <button type="submit">Add</button>
             </form>
     )
 }

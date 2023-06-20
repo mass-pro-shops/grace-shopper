@@ -3,8 +3,13 @@ import axios from 'axios';
 
 export const editProduct = createAsyncThunk('editProduct',
 async (newInfo) => {
+    const token = window.localStorage.getItem("token");
     try{
-        const { data } = await axios.put(`/api/products/${newInfo.id}`,newInfo);
+        const { data } = await axios.put(`/api/products/${newInfo.id}`,newInfo, {
+            headers: {
+                authorization: token,
+            },
+        });
         return data;
     }catch(err){
         console.log('editProduct error',err)
@@ -13,11 +18,32 @@ async (newInfo) => {
 
 export const deleteProduct = createAsyncThunk('deleteProduct',
 async (id) => {
+    const token = window.localStorage.getItem("token");
     try{
-        const { data } = await axios.delete(`/api/products/${id}`)
+        const { data } = await axios.delete(`/api/products/${id}`, {
+            headers: {
+                authorization: token,
+            },
+        })
         return data
     }catch(err){
         console.log('delete product error:',err)
+    }
+})
+
+export const addProduct = createAsyncThunk('addProduct',
+async (newInfo) => {
+    const token = window.localStorage.getItem("token");
+    try{
+        const { data } = await axios.post('/api/products',newInfo,{
+            headers: {
+                authorization: token,
+            },
+        })
+        console.log(data)
+        return data
+    }catch(err){
+        console.log('add product error', err)
     }
 })
 
@@ -28,9 +54,12 @@ const editProductSlice = createSlice({
         builder.addCase(editProduct.fulfilled, (state,action) => {
             state = action.payload
             return action.payload
-        })
+        }),
         builder.addCase(deleteProduct.fulfilled, (state,action) => {
             state =[]
+        }),
+        builder.addCase(addProduct.fulfilled, (state,action) => {
+            return action.payload
         })
     }
 })

@@ -1,16 +1,18 @@
 import React, { useEffect,useState } from 'react'
 import { useDispatch } from 'react-redux';
-import { deleteProduct, editProduct } from './editProductSlice';
-import { fetchUsers, fetchProducts } from "../adminView/adminViewSlice";
+import { addProduct } from './editProductSlice';
+import { fetchProducts } from '../adminView/adminViewSlice';
 
-export default function ProductUpdate({product}) {
+export default function AddProduct() {
     const [name, setName] = useState('');
     const [price, setPrice] = useState('');
     const [quantity, setQuantity] = useState('');
     const [description, setDescription] = useState('')
-    
-    const dispatch = useDispatch()
+    const [image,setImage] = useState('')
+    const [category, setCategory] = useState('laptop')
 
+    const dispatch = useDispatch()
+    
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -19,28 +21,25 @@ export default function ProductUpdate({product}) {
             price:price,
             quantity:quantity,
             description:description,
-            id:product.id
+            image:image,
+            category:category
         }
-        console.log(product.id)
+
         try{
-            dispatch(editProduct(newInfo))
-            dispatch(fetchProducts())
+            await dispatch(addProduct(newInfo))
+
             setName('')
             setPrice('')
             setQuantity('')
             setDescription('')
+            setImage('')
+            setCategory('laptop')
+            dispatch(fetchProducts())
         }catch(err){
-            console.log('editForm handleSubmit error:',err)
+            console.log('addProduct handleSubmit error', err)
         }
     }
 
-    const handleDelete =  () => {
-        dispatch(deleteProduct(product.id))
-    }
-
-    useEffect(() => {
-        dispatch(fetchProducts());
-    }, [dispatch]);
   return (
     <form onSubmit={handleSubmit} className="updateForm">
         <div className="contElement">
@@ -59,9 +58,20 @@ export default function ProductUpdate({product}) {
             <label>Description:</label>
             <input type='text' value={description} onChange={e => setDescription(e.target.value)}></input>
         </div>
-        <button type='submit'>Submit</button>
-        <button onClick={() => handleDelete()}>Delete</button>
+        <div className="contElement">
+            <label>image:</label>
+            <input type='text' value={image} onChange={e => setImage(e.target.value)}></input>
+        </div>
+        <div className="contElement">
+            <label>Category:</label>
+            <select value='laptop' onChange={e => setCategory(e.target.value)}>
+                <option value='laptop' >Laptop</option>
+                <option value='desktop' >Desktop</option>
+                <option value='projector' >Projector</option>
+                <option value='audio' >Audio</option>
+            </select>
+        </div>
+        <button type='submit'>Add</button>
     </form>
   )
 }
-

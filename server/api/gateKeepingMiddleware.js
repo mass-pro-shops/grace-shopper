@@ -11,6 +11,15 @@ const requireToken  = async (req, res, next) => {
     }
 }
 
+const isAdmin = (req,res,next) => {
+    if (!req.user.isAdmin){
+        return res.status(403).send("ah ah ah, you didn't say the magic word")
+    } else {
+        next()
+    }
+}
+
 module.exports = {
-    requireToken
+    requireToken,
+    isAdmin
 }

@@ -8,6 +8,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
 const Navbar = () => {
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const isAdmin = useSelector((state) => !!state.auth.me.isAdmin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const logoutAndRedirectHome = () => {
@@ -19,10 +20,10 @@ const Navbar = () => {
   const user = useSelector((state) => {
    return state.auth.me})
 
-  console.log('this is user',user)
+  //console.log('this is user',user)
 
   useEffect(()=>{
-    dispatch(fetchSingleUser(user.id))
+    //dispatch(fetchSingleUser(user.id))
   },[])
   
   return (
@@ -38,6 +39,7 @@ const Navbar = () => {
           <div className='navbar__right'>
             {/* The navbar will show these links after you log in */}
             <p className='navbar__hi'>Hi {user.name}!</p>
+            {isAdmin ? <Link to='/admin'><h4>Admin</h4></Link> : <></>}
             <Link to='/products' className='navbar__allproducts'>All Products</Link>
             <div className='navbar__cart'>
               <Link to='/cart' className='navbar__cartIcon'>

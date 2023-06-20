@@ -11,9 +11,7 @@ const Footer = (props) => {
                 </Link>
             </div>
             <div className="footerColumn">
-            <Link to='/admin'>
-                <h4>Admin</h4>
-            </Link>
+                <h4>TBD</h4>
             </div>
             <div className="footerColumn">
                 <h4>TBD</h4>

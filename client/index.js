@@ -4,16 +4,14 @@ import { Provider } from 'react-redux';
 import store from './app/store.js';
 import App from './app/App';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { CartProvider } from 'react-use-cart';
+import '!style-loader!css-loader!bootstrap/dist/css/bootstrap.min.css';
 
 const root = createRoot(document.getElementById('app'));
 
 root.render(
   <Router>
     <Provider store={store}>
-      <CartProvider>
          <App />
-      </CartProvider>
     </Provider>
   </Router>
 );

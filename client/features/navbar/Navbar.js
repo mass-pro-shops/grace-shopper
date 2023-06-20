@@ -11,6 +11,7 @@ const Navbar = () => {
   const isAdmin = useSelector((state) => !!state.auth.me.isAdmin);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   const logoutAndRedirectHome = () => {
     dispatch(logout());
     navigate('/login');
@@ -18,9 +19,9 @@ const Navbar = () => {
 
   //selecting logged in user:
   const user = useSelector((state) => {
-   return state.auth.me})
+   return state.auth.me
+  })
 
-  //console.log('this is user',user)
 
   useEffect(()=>{
     //dispatch(fetchSingleUser(user.id))

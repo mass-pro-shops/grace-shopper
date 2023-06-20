@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 
 const Categories = (props) => {
     const dispatch = useDispatch();
-    const categories = ['LAPTOPS', 'PROJECTORS', 'DESKTOPS', 'AUDIO'];
+    const categories = ['LAPTOP', 'PROJECTOR', 'DESKTOP', 'AUDIO'];
 
     return (
         <div className="categories-section">

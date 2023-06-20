@@ -67,7 +67,7 @@ const UserUpdate = (props) => {
                     />
                 </div>
                 <div className="contElement">
-                    <label htmlFor="email">email: {props.user.email}</label>
+                    <label htmlFor="email">Email: {props.user.email}</label>
                     <input
                     type="text"
                     name="email"
@@ -76,7 +76,7 @@ const UserUpdate = (props) => {
                     />
                 </div>
                 <div className="contElement">
-                    <label htmlFor="password">password: </label>
+                    <label htmlFor="password">Password: </label>
                     <input
                         type="text"
                         name="password"
@@ -86,7 +86,7 @@ const UserUpdate = (props) => {
                 </div>
                 <div className="contElement">
                     <label htmlFor="address">
-                        address: {props.user.address}
+                        Address: {props.user.address}
                     </label>
                     <input
                         type="text"

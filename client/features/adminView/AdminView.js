@@ -82,7 +82,6 @@ const AdminView = (props) => {
     return (
         <div className="categoriesAndContentContainer">
             <div className="categories">
-                admin left side
                 <button onClick={()=>handleClick("Products")}>Products</button>
                 <button onClick={()=>handleClick("Users")}>Users</button>
             </div>

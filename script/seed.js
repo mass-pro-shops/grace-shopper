@@ -38,7 +38,6 @@ async function seed() {
             image: 'https://upload.wikimedia.org/wikipedia/commons/5/5a/Microsoft_Surface_Pro_4.png',
             rating: 4.5,
             quantity: 2,
-            category:'desktop'
         }),
         Product.create({
             name: 'Apple IMagineWorking 4',

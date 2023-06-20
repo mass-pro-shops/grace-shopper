@@ -67,14 +67,14 @@ export const Cart = () => {
             </div>
             <div className ="cart-total-checkout">
                 <div className = "cart-total">
-                    <span>Subtotal: ${`${cart.cartTotalAmount}`}</span>
+                    <span>Subtotal: {USDollar.format(cart.cartTotalAmount)}</span>
                     <Button variant="primary" onClick={() => clearCartHandler()}>Clear cart</Button>
-    
                 </div>
                 <div class = 'cart-checkout'>
                     <small>Taxes and shipping calculated at checkout.</small>
                     <PayButton cartItems = {cart.cartItems}/>
                     <Link to ='/home'>Continue shopping.</Link>
+                    <Link to ='/order-history'>Order history</Link>
                 </div>
             </div>
         </div>

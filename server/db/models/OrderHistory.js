@@ -2,7 +2,7 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const OrderHistory = db.define('order-history', {
-    product: {
+    name: {
         type: Sequelize.STRING
     },
     price: {

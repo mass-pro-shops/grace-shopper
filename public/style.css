@@ -447,3 +447,7 @@ nav {
     display: flex;
     flex-direction: column;
 }
+
+.order-history-container {
+    background-color: white;
+}

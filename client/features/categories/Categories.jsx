@@ -1,18 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-const Categories = () => {
+const Categories = (props) => {
+    const dispatch = useDispatch();
     const categories = ['LAPTOP', 'PROJECTOR', 'DESKTOP', 'AUDIO'];
-//changed to singular, audio devices to just audio
+
     return (
         <div className="categories-section">
             <ul className="category-list">
+                <button
+                    className="category-item"
+                    onClick={() => {
+                        props.setFiltered(false);
+                    }}>
+                    ALL
+                </button>
                 {categories.map((category, id) => (
-                    <Link to={`./products/${category}`} key={id}>
-                        <li key={category.id} className="category-item">
+                    <li key={category.id}>
+                        <button
+                            className="category-item"
+                            onClick={() => props.handleClick({ category })}>
                             {category}
-                        </li>
-                    </Link>
+                        </button>
+                    </li>
                 ))}
             </ul>
         </div>

@@ -6,15 +6,12 @@ import Home from '../features/home/Home';
 import { me } from './store';
 import { NewUserForm } from '../features/NewUserComponent';
 import { ContactPage } from '../features/contactComponent';
-import { AllProducts, Footer, UserProfile } from '../features';
+import { AllProducts, AdminView, UserProfile} from '../features';
 import Product from '../features/product/Product';
-
 import PageNotFound from '../features/404NotFound/PageNotFound';
-
 import { Cart } from '../features/cart/Cart';
-import { TestProducts } from '../features/cart/testProducts';
-import Checkout, { Stripe } from '../features/cart/CheckoutTest';
-
+import { CheckoutSuccess } from '../features/checkout/checkoutSuccess';
+import { OrderHistory } from '../features/checkout/orderHistory';
 /**
  * COMPONENT
  */
@@ -34,6 +31,7 @@ const AppRoutes = () => {
             </Routes>
             {isLoggedIn ? (
                 <Routes>
+                    <Route path="/admin" element={<AdminView />} />
                     <Route path="/*" element={<PageNotFound />} />
                     <Route path="/home" element={<Home />} />
                     <Route
@@ -49,8 +47,6 @@ const AppRoutes = () => {
                     />
                     <Route path="/userProfile" element={<UserProfile />} />
                     <Route path="/cart" element={<Cart />} />
-                    <Route path="/prodTEST" element={<TestProducts />} />
-                    <Route path="/checkoutTEST" element={<Checkout />} />
                     <Route
                         key="product"
                         path="/products/:Id"
@@ -65,7 +61,9 @@ const AppRoutes = () => {
                             />
                         }
                     />
+                    <Route path="/order-history" element={<OrderHistory/>}/>
                     <Route path="/register" element={<NewUserForm />} />
+                    <Route path="/checkout-success" element={<CheckoutSuccess/>}/>
                 </Routes>
             ) : (
                 <Routes>

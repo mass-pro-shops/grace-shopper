@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Categories = () => {
-    const categories = ['LAPTOPS', 'PROJECTORS', 'DESKTOPS', 'AUDIO DEVICES'];
-
+    const categories = ['LAPTOP', 'PROJECTOR', 'DESKTOP', 'AUDIO'];
+//changed to singular, audio devices to just audio
     return (
         <div className="categories-section">
             <ul className="category-list">

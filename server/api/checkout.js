@@ -1,9 +1,10 @@
 require('dotenv').config()
 const router = require('express').Router()
-const OrderHistory = require('../db/models/OrderHistory');
-const products = require('../db/models/Product')
 const stripe = require('stripe')(process.env.STRIPE_PRIVATE_KEY)
 
+router.get('/check', async(req,res) => {
+  res.send('working')
+})
 
 router.post('/create-checkout-session', async (req, res) => {
   const line_items = req.body.cartItems.map(item => {
@@ -24,38 +25,59 @@ router.post('/create-checkout-session', async (req, res) => {
   })
     const session = await stripe.checkout.sessions.create({
       customer_email: 'customer@example.com',
-      submit_type: 'donate',
       billing_address_collection: 'auto',
       shipping_address_collection: {
         allowed_countries: ['US', 'CA'],
       },
+      shipping_options: [
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+              amount: 0,
+              currency: 'usd',
+            },
+            display_name: 'Free shipping',
+            delivery_estimate: {
+              minimum: {
+                unit: 'business_day',
+                value: 5,
+              },
+              maximum: {
+                unit: 'business_day',
+                value: 7,
+              },
+            },
+          },
+        },
+        {
+          shipping_rate_data: {
+            type: 'fixed_amount',
+            fixed_amount: {
+              amount: 1500,
+              currency: 'usd',
+            },
+            display_name: 'Next day air',
+            delivery_estimate: {
+              minimum: {
+                unit: 'business_day',
+                value: 1,
+              },
+              maximum: {
+                unit: 'business_day',
+                value: 1,
+              },
+            },
+          },
+        },
+      ],
       line_items,
       mode: 'payment',
-      success_url: `${process.env.CLIENT_URL}/checkout-success`,
-      cancel_url: `${process.env.CLIENT_URL}/cart`,
+      success_url: 'http://localhost:8080/checkout-success',
+      cancel_url: 'http://localhost:8080/cart'
     });
   
     res.send({url: session.url});
   });
 
-router.get('/order-history', async(req,res,next) => {
-  try {
-    const order_history = await OrderHistory.findAll()
-    res.send(order_history)
-  } catch(error) {
-    next(error)
-  }
-})
-router.post('/create-order-history', async(req,res,next) => {
-  const cart_items = req.body.cartItems.map(item => {
-    OrderHistory.create({
-      name: item.name,
-      price: item.price,
-      description: item.description,
-      image: item.image,
-      orderQuantity: item.cartQuantity
-    })
-  }) 
-  res.send(cart_items)
-})
 module.exports = router

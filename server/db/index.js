@@ -4,17 +4,11 @@ const db = require('./db');
 
 const User = require('./models/User');
 const Product = require('./models/Product');
-const OrderHistory = require('./models/OrderHistory')
-//associations could go here!
-
-User.hasMany(OrderHistory)
-OrderHistory.belongsTo(User)
 
 module.exports = {
     db,
     models: {
         User,
-        Product,
-        OrderHistory
+        Product
     },
 };

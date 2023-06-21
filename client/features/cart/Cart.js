@@ -9,7 +9,7 @@ import PayButton from "../checkout/PayButton";
 export const Cart = () => {
     const dispatch = useDispatch()
     const cart = useSelector(getCart)
-    
+   
     useEffect(() => {
        dispatch(getTotals())
     }, [cart])
@@ -72,7 +72,7 @@ export const Cart = () => {
                 </div>
                 <div class = 'cart-checkout'>
                     <small>Taxes and shipping calculated at checkout.</small>
-                    <PayButton cartItems = {cart.cartItems}/>
+                    <PayButton cartItems={cart.cartItems}/>
                     <Link to ='/home'>Continue shopping.</Link>
                     <Link to ='/order-history'>Order history</Link>
                 </div>

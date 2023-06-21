@@ -11,7 +11,6 @@ import Product from '../features/product/Product';
 import PageNotFound from '../features/404NotFound/PageNotFound';
 import { Cart } from '../features/cart/Cart';
 import { CheckoutSuccess } from '../features/checkout/checkoutSuccess';
-import { OrderHistory } from '../features/checkout/orderHistory';
 /**
  * COMPONENT
  */
@@ -61,7 +60,6 @@ const AppRoutes = () => {
                             />
                         }
                     />
-                    <Route path="/order-history" element={<OrderHistory/>}/>
                     <Route path="/register" element={<NewUserForm />} />
                     <Route path="/checkout-success" element={<CheckoutSuccess/>}/>
                 </Routes>

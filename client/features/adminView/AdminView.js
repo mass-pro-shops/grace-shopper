@@ -39,7 +39,7 @@ const AdminView = (props) => {
                             <div>{el.email}</div>
                             <button className='editButton' onClick={() => handleExpand(el.id)}>Edit</button>
                         </div>
-                        {expanded ? selectedForm === el.id && <UserUpdate user={el}/>: <></> }
+                        {expanded ? selectedForm === el.id && <UserUpdate user={el} whoAsked="admin"/>: <></> }
                     </div>
                 )
             })

@@ -5,7 +5,6 @@ import productsReducer from '../features/allProducts/allProducts';
 import productSliceReducer from '../features/product/productSlices';
 import userProfileSlice from '../features/userProfile/userProfileSlice';
 import cartSliceReducer, { getTotals } from '../features/cart/cartSlice';
-import orderHistoryReducer from '../features/checkout/orderSlice';
 import adminViewSlice from '../features/adminView/adminViewSlice';
 import editProductSlice from '../features/updateForms/editProductSlice';
 
@@ -16,7 +15,6 @@ const store = configureStore({
         singleUser: userProfileSlice,
         product: productSliceReducer,
         cart: cartSliceReducer,
-        orderHistory: orderHistoryReducer,
         adminView: adminViewSlice,
         editProduct: editProductSlice,
     },

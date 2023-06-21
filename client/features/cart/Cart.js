@@ -194,9 +194,8 @@ export const Cart = () => {
                 </div>
                 <div className="cart-checkout">
                     <small>Taxes and shipping calculated at checkout.</small>
-                    <PayButton cartItems={cart.cartItems} />
-                    <Link to="/home">Continue shopping.</Link>
-                    <Link to="/order-history">Order history</Link>
+                    <PayButton cartItems={cart.cartItems}/>
+                    <Link to ='/home'>Continue shopping.</Link>
                 </div>
             </div>
         </div>

@@ -14,14 +14,25 @@ const AuthForm = ({ name, displayName }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
     const username = evt.target.username.value;
     const password = evt.target.password.value;
-    dispatch(authenticate({ username, password, method: formName }));
-    navigate('/home')
+
+    const success = await dispatch(authenticate({username,password,method:formName}))
+
+    if(success.error){
+      console.error('login failed')
+      console.log('Login failed, Please try again.')
+    }else{
+      navigate('/home')
+    }
+  
     
+    // dispatch(authenticate({ username, password, method: formName }));
+    // navigate('/home')
+
   };
 
   return (

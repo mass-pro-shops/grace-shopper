@@ -29,7 +29,7 @@ const AppRoutes = () => {
             {isLoggedIn ? (
                 <Routes>
                     <Route path="/admin" element={<AdminView />} />
-                    <Route path="/" element={<PageNotFound />} />
+                    <Route path="/*" element={<PageNotFound />} />
                     <Route path="/home" element={<Home />} />
                     <Route
                         key="product"

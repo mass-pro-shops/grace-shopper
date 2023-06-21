@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { authenticate } from "./auth/authSlice";
+import { useNavigate } from "react-router-dom";
 
 export const NewUserForm = () => {
     const [username, setUsername] = useState('')
@@ -11,11 +12,13 @@ export const NewUserForm = () => {
     const [confirmpassword, setConfirmPassword] = useState('')
     const [address, setAddress] = useState('')
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
     const formHandler = (e) => {
         e.preventDefault()
         if(password === confirmpassword) {
             dispatch(authenticate({method:'signup', username,name,email,password,address}))
+            navigate('/home')
         } else {
             return window.alert('Password must match')
         }
@@ -36,7 +39,7 @@ export const NewUserForm = () => {
                 <input type='password' onChange={(e) => {setConfirmPassword(e.target.value)}}/>
                 <label>Address:</label>
                 <input type='text' onChange={(e) => {setAddress(e.target.value)}}/>
-                <button>Submit</button>
+                <button type="submit">Submit</button>
             </form>
         </div>
     )

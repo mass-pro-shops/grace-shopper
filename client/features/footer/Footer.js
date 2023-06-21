@@ -10,12 +10,6 @@ const Footer = (props) => {
                     <h4>Contacts</h4>
                 </Link>
             </div>
-            <div className="footerColumn">
-                <h4>TBD</h4>
-            </div>
-            <div className="footerColumn">
-                <h4>TBD</h4>
-            </div>
         </div>
     )
 }

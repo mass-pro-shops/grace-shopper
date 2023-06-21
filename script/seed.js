@@ -1,8 +1,10 @@
 'use strict';
+
 const {
     db,
     models: { User, Product },
 } = require('../server/db');
+
 /**
  * seed - this function clears the database, updates tables to
  *      match the models, and populates the database.
@@ -10,6 +12,7 @@ const {
 async function seed() {
     await db.sync({ force: true }); // clears db and matches models to tables
     console.log('db synced!');
+
     // Creating Users
     const users = await Promise.all([
         User.create({
@@ -32,6 +35,7 @@ async function seed() {
             isAdmin:true,
         }),
     ]);
+
     const products = await Promise.all([
         //LAPTOP CATEGORY------
         Product.create({
@@ -48,7 +52,7 @@ async function seed() {
             price: 69.99,
             description: 'Great for starters, terrible in general',
             category: 'laptop',
-            image: 'https://file2.removal.ai/preview/c6a7a904-a6e1-40b0-bfd5-90e08216f34c.png',
+            image: 'https://file.removal.ai/preview/tmp-64935a7c392aa.png',
             rating: 4.1,
             quantity: 17,
         }),
@@ -131,6 +135,7 @@ async function seed() {
             rating: 4.4,
             quantity: 9,
         }),
+
         //DESKTOP CATEGORY-------
         Product.create({
             name: "MacBook Pro",
@@ -146,7 +151,7 @@ async function seed() {
             price: 1299.99,
             description: "Ever wanted a jet engine?",
             category: "desktop",
-            image: "https://file1.removal.ai/preview/3d3bc325-b22f-4614-8fb7-babb86ad5331.png",
+            image: "https://file.removal.ai/preview/tmp-649356af1edf7.png",
             rating: 4.3,
             quantity: 21,
         }),
@@ -164,7 +169,7 @@ async function seed() {
             price: 1899.99,
             description: "Sleek and high-performance desktop computer",
             category: "desktop",
-            image: "https://file2.removal.ai/preview/6884523c-4eff-49ce-993d-08b80c0175fd.png",
+            image: "https://file.removal.ai/preview/tmp-64935ab58560f.png",
             rating: 4.8,
             quantity: 10,
         }),
@@ -173,7 +178,7 @@ async function seed() {
             price: 899.99,
             description: "Compact and powerful mini desktop",
             category: "desktop",
-            image: "https://file1.removal.ai/preview/126adae9-0177-46b1-a138-ee4530d35299.png",
+            image: "https://file.removal.ai/preview/tmp-649356de0378d.png",
             rating: 4.4,
             quantity: 18,
         }),
@@ -200,7 +205,7 @@ async function seed() {
             price: 1199.99,
             description: "Stylish all-in-one desktop with touchscreen display",
             category: "desktop",
-            image: "https://file1.removal.ai/preview/3805da26-9003-4f85-95be-2c580dd1b4ee.png",
+            image: "https://file.removal.ai/preview/tmp-64935762a19ed.png",
             rating: 4.6,
             quantity: 16,
         }),
@@ -222,6 +227,9 @@ async function seed() {
             rating: 4.7,
             quantity: 9,
         }),
+
+
+
         //projector/tv stuff-----------
         Product.create({
             name: 'GPX Mini Projector 4',
@@ -250,6 +258,7 @@ async function seed() {
             rating: 4.6,
             quantity: 3,
         }),
+
         Product.create({
             name: "LG Ultra Short Throw Projector",
             price: 1299.99,
@@ -259,6 +268,7 @@ async function seed() {
             rating: 4.4,
             quantity: 25,
         }),
+
         Product.create({
             name: "Epson Home Cinema Projector",
             price: 899.99,
@@ -268,6 +278,7 @@ async function seed() {
             rating: 4.2,
             quantity: 40,
         }),
+
         Product.create({
             name: "Samsung QLED TV",
             price: 1999.99,
@@ -313,6 +324,9 @@ async function seed() {
             rating: 4.2,
             quantity: 18,
         }),
+
+
+
         //AUDIO STUFF ---- 
         Product.create({
             name: 'Headcandy Headphones',
@@ -404,17 +418,21 @@ async function seed() {
             rating: 4.5,
             quantity: 20,
         }),
+
+
+
         //can delete this later---
         Product.create({
             name: 'Hope',
             price: 20.25,
             description: 'Our ray of hope for when AI takes over',
-            category: 'audio',
+            category: 'easter egg',
             image: 'https://www.hostesscakes.com/wp-content/uploads/2020/03/HST_TWINK_Hero_Original_Cut.png',
             rating: 1.5,
             quantity: 1
         })
     ]);
+
     console.log(`seeded ${users.length} users & ${products.length} products`);
     console.log(`seeded successfully`);
     return {
@@ -424,6 +442,7 @@ async function seed() {
         },
     };
 }
+
 /*
  We've separated the `seed` function from the `runSeed` function.
  This way we can isolate the error handling and exit trapping.
@@ -442,6 +461,7 @@ async function runSeed() {
         console.log('db connection closed');
     }
 }
+
 /*
   Execute the `seed` function, IF we ran this module directly (`node seed`).
   `Async` functions always return a promise, so we can use `catch` to handle
@@ -450,5 +470,6 @@ async function runSeed() {
 if (module === require.main) {
     runSeed();
 }
+
 // we export the seed function for testing purposes (see `./seed.spec.js`)
 module.exports = seed;

@@ -26,9 +26,6 @@ const AppRoutes = () => {
 
     return (
         <div>
-            <Routes>
-                <Route path="/contacts" element={<ContactPage />} />
-            </Routes>
             {isLoggedIn ? (
                 <Routes>
                     <Route path="/admin" element={<AdminView />} />
@@ -67,6 +64,7 @@ const AppRoutes = () => {
                         path="/checkout-success"
                         element={<CheckoutSuccess />}
                     />
+                    <Route path="/contacts" element={<ContactPage />} />
                 </Routes>
             ) : (
                 <Routes>
@@ -99,6 +97,7 @@ const AppRoutes = () => {
                         }
                     />
                     <Route path="/register" element={<NewUserForm />} />
+                    <Route path="/contacts" element={<ContactPage />} />
                 </Routes>
             )}
         </div>

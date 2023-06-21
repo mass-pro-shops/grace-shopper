@@ -11,18 +11,9 @@ const Home = (props) => {
 
   return (
     <div>
-      <h3>Welcome, {username}</h3>
       <AllProducts/>
     </div>
   );
-    return (
-        <div>
-            <div>
-                <h3>Welcome, {username}</h3>
-            </div>
-            <Categories />
-        </div>
-    );
 };
 
 export default Home;

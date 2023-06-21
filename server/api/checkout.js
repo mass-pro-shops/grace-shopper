@@ -73,8 +73,8 @@ router.post('/create-checkout-session', async (req, res) => {
       ],
       line_items,
       mode: 'payment',
-      success_url: 'http://localhost:8080/checkout-success',
-      cancel_url: 'http://localhost:8080/cart'
+      success_url: 'https://two303-mass-pro-shops.onrender.com/checkout-success',
+      cancel_url: 'https://two303-mass-pro-shops.onrender.com/cart'
     });
   
     res.send({url: session.url});

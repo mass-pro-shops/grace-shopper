@@ -6,7 +6,7 @@ import Home from '../features/home/Home';
 import { me } from './store';
 import { NewUserForm } from '../features/NewUserComponent';
 import { ContactPage } from '../features/contactComponent';
-import { AllProducts, AdminView, UserProfile} from '../features';
+import { AllProducts, AdminView, UserProfile } from '../features';
 import Product from '../features/product/Product';
 import PageNotFound from '../features/404NotFound/PageNotFound';
 import { Cart } from '../features/cart/Cart';
@@ -61,9 +61,12 @@ const AppRoutes = () => {
                             />
                         }
                     />
-                    <Route path="/order-history" element={<OrderHistory/>}/>
+                    <Route path="/order-history" element={<OrderHistory />} />
                     <Route path="/register" element={<NewUserForm />} />
-                    <Route path="/checkout-success" element={<CheckoutSuccess/>}/>
+                    <Route
+                        path="/checkout-success"
+                        element={<CheckoutSuccess />}
+                    />
                 </Routes>
             ) : (
                 <Routes>

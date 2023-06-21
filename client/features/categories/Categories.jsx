@@ -16,7 +16,7 @@ const Categories = (props) => {
                     ALL
                 </button>
                 {categories.map((category, id) => (
-                    <li key={category.id}>
+                    <li key={id}>
                         <button
                             className="category-item"
                             onClick={() => props.handleClick({ category })}>

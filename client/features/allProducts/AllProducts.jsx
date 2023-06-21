@@ -10,8 +10,7 @@ const AllProducts = () => {
     const [filtered, setFiltered] = useState(false);
     const [category, setCategory] = useState('');
     const productsList = useSelector(getAllProducts);
-    const navigate = useNavigate()
-
+    const navigate = useNavigate();
 
     const handleClick = (category) => {
         setFiltered(true);
@@ -23,14 +22,13 @@ const AllProducts = () => {
     }, []);
 
     const addToCart = (product) => {
-        dispatch(addItem(product))
-    }
-    
+        dispatch(addItem(product));
+    };
+
     let USDollar = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
     });
-    
 
     return (
         <div className="main-section">
@@ -61,10 +59,16 @@ const AllProducts = () => {
                                         <h3 className="card-title">
                                             {product.name}
                                         </h3>
-                                         <h2 className="price">{USDollar.format(product.price)}</h2>
-                                    <button onClick={() => {addToCart(product)}} className="buy">
-                                        Buy Now
-                                    </button>
+                                        <h2 className="price">
+                                            {USDollar.format(product.price)}
+                                        </h2>
+                                        <button
+                                            onClick={() => {
+                                                addToCart(product);
+                                            }}
+                                            className="buy">
+                                            Buy Now
+                                        </button>
                                     </div>
                                 </div>
                             ))

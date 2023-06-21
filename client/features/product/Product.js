@@ -26,7 +26,7 @@ const Product = () => {
     };
 
     const handleAddToCart = (product) => {
-        addItem(product);
+        dispatch(addItem(product));
         setCartConfirmation(`Added ${quantity} to cart!`);
     };
 
@@ -51,7 +51,9 @@ const Product = () => {
 
                         <div className="productActions">
                             <button
-                                onClick={handleAddToCart}
+                                onClick={() => {
+                                    handleAddToCart(product);
+                                }}
                                 className="buyButton">
                                 {' '}
                                 Add to cart{' '}

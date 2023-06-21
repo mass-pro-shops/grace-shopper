@@ -29,14 +29,14 @@ const AppRoutes = () => {
             {isLoggedIn ? (
                 <Routes>
                     <Route path="/admin" element={<AdminView />} />
-                    <Route path="/*" element={<PageNotFound />} />
+                    <Route path="/" element={<PageNotFound />} />
                     <Route path="/home" element={<Home />} />
                     <Route
                         key="product"
                         path="/product/:Id"
                         element={<Product />}
                     />
-                    <Route path="/*" element={<Home />} />
+                    <Route path="/" element={<Home />} />
                     <Route
                         key="product"
                         path="/products/:Id"

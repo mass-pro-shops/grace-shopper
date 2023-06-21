@@ -97,6 +97,7 @@ const AppRoutes = () => {
                     />
                     <Route path="/register" element={<NewUserForm />} />
                     <Route path="/contacts" element={<ContactPage />} />
+                    <Route path="/cart" element={<Cart />} />
                 </Routes>
             )}
         </div>

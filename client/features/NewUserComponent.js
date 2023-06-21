@@ -22,7 +22,7 @@ export const NewUserForm = () => {
     }
 
     return (
-        <div>
+        <div className='new-user-form'>
             <form onSubmit={formHandler}>
                 <label>Username:</label>
                 <input type='text' onChange={(e) => {setUsername(e.target.value)}}/>

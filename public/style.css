@@ -93,7 +93,6 @@ nav {
     height: 60px;
     display: flex;
     align-items: center;
-    /* background-color: blue; */
     position: sticky;
     top: 0;
     z-index: 100;
@@ -146,6 +145,7 @@ nav {
     right: 0;
     padding-top: 15px;
     font-weight: 600;
+    background-color: rgb(213, 213, 213);
 }
 
 .navbar__dropdownContent > button {
@@ -748,6 +748,53 @@ nav {
     background-color: white;
 }
 
+/* Login component styling */
+.loginDiv{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  color:white;
+  font-size: 1.5rem;
+}
+
+.loginButton {
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 5px;
+  font-weight: 800;
+}
+
+/* contact page styling */
+.contactPage{
+  display: flex;
+  align-items: flex-start;
+  align-content: space-around;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 100vh;
+  color:rgb(230, 230, 230);
+
+}
+
+.contactPageCard{
+  margin-top: 18px;
+}
+
+.contactPageCard > h2 {
+  font-size: 2rem;
+  
+}
+
+.contactPageCard > a{
+  text-decoration: none;
+  color:rgb(0, 166, 255)
+}
+
+.contactPageCard > a:hover{
+  font-size: 1.2rem;
+}
+
 .new-user-form {
     display: flex;
     flex-direction: column;
@@ -777,3 +824,4 @@ nav {
 .new-user-form button:active {
     opacity: 50%;
 }
+

@@ -1,7 +1,7 @@
 import React, { useEffect,useState } from "react";
 import { useDispatch } from 'react-redux';
 import { editUser, deleteUser } from '../userProfile/userProfileSlice';
-import { fetchUsers, fetchProducts } from "../adminView/adminViewSlice";
+import { fetchUsers } from "../adminView/adminViewSlice";
 
 const UserUpdate = (props) => {
     const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const UserUpdate = (props) => {
             address: address,
             id: props.user.id,
         };
-
+        console.log(props.whoAsked)
         try {
             dispatch(editUser(newUser));
             setName(newUser.name);
@@ -29,7 +29,9 @@ const UserUpdate = (props) => {
             setEmail(newUser.email)
             setPassword(newUser.password);
             setAddress(newUser.address);
-            dispatch(fetchUsers())
+            if (props.whoAsked) {
+                dispatch(fetchUsers())
+            }
         } catch (err) {
             console.log(err);
         }
@@ -39,11 +41,13 @@ const UserUpdate = (props) => {
     function handleClick(id) {
         dispatch(deleteUser(id));
     }
-
+    
     useEffect(() => {
-        dispatch(fetchUsers());
+        if (props.whoAsked) {
+            dispatch(fetchUsers())
+        }
     }, [dispatch]);
-
+   
     return (
         <form onSubmit={handleSubmit} className="updateForm">
                 <div className="contElement">

@@ -38,7 +38,7 @@ const Product = db.define('product', {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            isIn: [['laptop', 'desktop', 'projector', 'audio']]
+            isIn: [['laptop', 'desktop', 'projector', 'audio', 'easter egg']]
         }
     }
 });

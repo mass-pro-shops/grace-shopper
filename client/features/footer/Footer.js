@@ -10,14 +10,6 @@ const Footer = (props) => {
                     <h4>Contacts</h4>
                 </Link>
             </div>
-            <div className="footerColumn">
-            <Link to='/admin'>
-                <h4>Admin</h4>
-            </Link>
-            </div>
-            <div className="footerColumn">
-                <h4>TBD</h4>
-            </div>
         </div>
     )
 }

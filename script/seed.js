@@ -53,6 +53,16 @@ async function seed() {
             quantity: 17,
         }),
         Product.create({
+            name: "HP Pavilion",
+            price: 899.99,
+            description: "Get the best of both worlds",
+            category: "laptop",
+            image: "/images/hp-pav-bg.png",
+            rating: 4.1,
+            quantity: 10,
+        }),
+
+        Product.create({
             name: "Lenovo ThinkPad",
             price: 1099.99,
             description: "Get thinkin with the ThinkPad",
@@ -61,6 +71,7 @@ async function seed() {
             rating: 4.4,
             quantity: 12,
         }),
+
         Product.create({
             name: 'HP Pavilion 15',
             price: 799.99,
@@ -70,6 +81,7 @@ async function seed() {
             rating: 4.3,
             quantity: 14,
         }),
+
         Product.create({
             name: 'Lenovo Yoga C940',
             price: 1199.99,
@@ -79,6 +91,7 @@ async function seed() {
             rating: 4.6,
             quantity: 11,
         }),
+
         Product.create({
             name: 'Acer Predator Helios 300',
             price: 1299.99,
@@ -88,6 +101,7 @@ async function seed() {
             rating: 4.7,
             quantity: 8,
         }),
+
         Product.create({
             name: 'MSI GS66 Stealth',
             price: 1499.99,
@@ -97,6 +111,7 @@ async function seed() {
             rating: 4.5,
             quantity: 16,
         }),
+
         Product.create({
             name: 'Razer Blade 15',
             price: 1799.99,
@@ -106,6 +121,7 @@ async function seed() {
             rating: 4.8,
             quantity: 7,
         }),
+
         Product.create({
             name: 'LG Gram 17',
             price: 1499.99,

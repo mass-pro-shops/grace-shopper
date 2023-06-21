@@ -19,8 +19,13 @@ export const fetchSingleUser = createAsyncThunk(
 
 export const editUser = createAsyncThunk(
     "editUser", async (userId) => {
+        const token = window.localStorage.getItem("token");
         try {
-            const {data} = await axios.put(`/api/users/${userId.id}`,userId)
+            const {data} = await axios.put(`/api/users/${userId.id}`, userId, {
+                headers: {
+                    authorization: token,
+                }
+            })
             return data
         } catch (err) {
             throw new Error(err.response.data.errors[0].message)
@@ -30,11 +35,32 @@ export const editUser = createAsyncThunk(
 
 export const deleteUser = createAsyncThunk(
     "deleteUser", async (userId) => {
+        const token = window.localStorage.getItem("token");
         try {
-            const {data} = await axios.delete(`/api/users/${userId}`)
+            const {data} = await axios.delete(`/api/users/${userId}`,{
+                headers: {
+                    authorization: token,
+                }
+            })
             return userId
         } catch (err) {
             console.log(err)
+        }
+    }
+)
+
+export const addUser = createAsyncThunk(
+    "addUser", async (newUser) => {
+        const token = window.localStorage.getItem("token");
+        try {
+            const {data} = await axios.post(`/api/users/`, newUser, {
+                headers: {
+                    authorization: token,
+                }
+            })
+            return data
+        } catch (err) {
+            throw new Error(err.response.data.errors[0].message)
         }
     }
 )
@@ -57,6 +83,9 @@ const userProfileSlice = createSlice({
         }),
         builder.addCase(deleteUser.fulfilled, (state, action) => {
             state.singleUser = []
+        }),
+        builder.addCase(addUser.fulfilled, (state,action) => {
+            state.singleUser = action.payload
         })
     }
 })

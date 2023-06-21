@@ -21,10 +21,11 @@ const AuthForm = ({ name, displayName }) => {
     const password = evt.target.password.value;
     dispatch(authenticate({ username, password, method: formName }));
     navigate('/home')
+    
   };
 
   return (
-    <div>
+    <div className='loginDiv'>
       <form onSubmit={handleSubmit} name={name}>
         <div>
           <label htmlFor="username">
@@ -39,8 +40,9 @@ const AuthForm = ({ name, displayName }) => {
           <input name="password" type="password" />
         </div>
         <div>
-          <button type="submit">{displayName}</button>
+          <button className='loginButton'  type="submit">{displayName}</button>
         </div>
+        <br/>
         {error && <div> {error} </div>}
       </form>
     </div>

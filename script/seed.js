@@ -57,16 +57,6 @@ async function seed() {
             quantity: 17,
         }),
         Product.create({
-            name: "HP Pavilion",
-            price: 899.99,
-            description: "Get the best of both worlds",
-            category: "laptop",
-            image: "https://file.removal.ai/preview/tmp-6493446ec58b3.png",
-            rating: 4.1,
-            quantity: 10,
-        }),
-
-        Product.create({
             name: "Lenovo ThinkPad",
             price: 1099.99,
             description: "Get thinkin with the ThinkPad",
@@ -97,16 +87,6 @@ async function seed() {
         }),
 
         Product.create({
-            name: 'Acer Predator Helios 300',
-            price: 1299.99,
-            description: 'Has the power of the sun',
-            category: 'laptop',
-            image: 'https://file.removal.ai/preview/tmp-6493459259f51.png',
-            rating: 4.7,
-            quantity: 8,
-        }),
-
-        Product.create({
             name: 'MSI GS66 Stealth',
             price: 1499.99,
             description: 'Type your code in stealth mode using the GS66 Stealth',
@@ -116,25 +96,8 @@ async function seed() {
             quantity: 16,
         }),
 
-        Product.create({
-            name: 'Razer Blade 15',
-            price: 1799.99,
-            description: 'From the brand that made your favorite scooters',
-            category: 'laptop',
-            image: 'https://file.removal.ai/preview/tmp-6493461167234.png',
-            rating: 4.8,
-            quantity: 7,
-        }),
 
-        Product.create({
-            name: 'LG Gram 17',
-            price: 1499.99,
-            description: 'Disclaimer, weighs more than 17 grams',
-            category: 'laptop',
-            image: 'https://file.removal.ai/preview/tmp-6493465dca927.png',
-            rating: 4.4,
-            quantity: 9,
-        }),
+
 
         //DESKTOP CATEGORY-------
         Product.create({
@@ -181,15 +144,6 @@ async function seed() {
             image: "https://file.removal.ai/preview/tmp-649356de0378d.png",
             rating: 4.4,
             quantity: 18,
-        }),
-        Product.create({
-            name: "Acer Aspire TC-895",
-            price: 699.99,
-            description: "Affordable and reliable desktop for everyday use",
-            category: "desktop",
-            image: "https://file.removal.ai/preview/tmp-64934ae8b77c1.png",
-            rating: 4.2,
-            quantity: 20,
         }),
         Product.create({
             name: "Asus ROG Strix G15CK",

@@ -8,7 +8,7 @@ const PayButton = ({cartItems}) => {
     const dispatch = useDispatch()
 
     const handleCheckout = async () => {
-       await axios.post(`http://localhost:8080/api/stripe/create-checkout-session`,{
+       await axios.post(`https://two303-mass-pro-shops.onrender.com/api/stripe/create-checkout-session`,{
             cartItems,
             userId: user.id,
         }).then((res) => {
